@@ -1,0 +1,163 @@
+//
+// Prefix header for all source files of the 'SlideshowCreator' target in the 'SlideshowCreator' project
+//
+
+#import <Availability.h>
+
+#ifndef __IPHONE_3_0
+#warning "This project uses features only available in iOS SDK 3.0 and later."
+#endif
+
+#ifdef __OBJC__
+    #import <UIKit/UIKit.h>
+    #import <Foundation/Foundation.h>
+#endif
+
+
+//#define RELEASE
+
+#ifdef RELEASE
+#define NSLog(...)
+#else
+#define NSLog(...) NSLog(__VA_ARGS__);
+#endif
+
+
+/*  library  */
+#import <QuartzCore/QuartzCore.h>
+#import <SystemConfiguration/SystemConfiguration.h>
+#import "UIImageView+WebCache.h"
+#import <math.h>
+#import <MobileCoreServices/UTCoreTypes.h>
+#import <MobileCoreServices/MobileCoreServices.h>
+#import <AssetsLibrary/AssetsLibrary.h>
+#import <AVFoundation/AVFoundation.h>
+#import "MBProgressHUD-Prefix.pch"
+#import "MBProgressHUD.h"
+//#import "IGConnect.h"
+#import "SVProgressHUD.h"
+#import "GPUImage.h"
+#import <MessageUI/MessageUI.h>
+#import <Social/Social.h>
+#import <Social/SLServiceTypes.h>
+#import <Twitter/Twitter.h>
+#import "InfiniteScrollPicker.h"
+#import "AFNetworking.h"
+
+/* import all header files here */
+#import "GMGridView.h"
+#import <AVFoundation/AVFoundation.h>
+#import <MediaPlayer/MediaPlayer.h>
+#import "NSDictionary+SCAdditions.h"
+#import "NSMutableDictionary+SCAdditions.h"
+#import "UIImage+ResizeMagick.h"
+#import "UIView+SCAdditions.h"
+
+// import all needed header
+#import "SCConst.h"
+#import "SCHelper.h"
+#import "SCResourceDefine.h"
+#import "SCNavigationController.h"
+
+//import all manager
+#import "SCBaseManager.h"
+#import "SCScreenManager.h"
+#import "SCVideoCreatorManager.h"
+#import "SCFileManager.h"
+#import "SCSettingManager.h"
+#import "SCSlideShowSettingManager.h"
+#import "SCSocialManager.h"
+#import "SCVineManager.h"
+
+
+//import all models
+#import "SCModel.h"
+#import "SCSlideModel.h"
+#import "SCCompositionModel.h"
+#import "SCVideoModel.h"
+#import "SCSlideShowModel.h"
+#import "SCTransitionModel.h"
+#import "SCAudioModel.h"
+#import "SCFilterModel.h"
+#import "SCTextModel.h"
+#import "SCVolumeRampModel.h"
+#import "SCInstagramImage.h"
+#import "SCInstagramUserModel.h"
+#import "SCUploadObject.h"
+
+//import all views
+#import "SCView.h"
+#import "SCMediaItemView.h"
+#import "SCLoadingView.h"
+#import "SCVideoDebugViewer.h"
+#import "SCPreviewer.h"
+#import "SCSlideShowPreview.h"
+#import "SCItemGridViewCell.h"
+#import "SCItemGridView.h"
+#import "SCPhotoItemView.h"
+#import "SCMediaTimeLineView.h"
+#import "SCPhotoStripItemView.h"
+#import "SCSheetMenu.h"
+#import "SCCameraOverlayView.h"
+#import "SCSoundTrackView.h"
+#import "SCAudioRecordView.h"
+#import "SCImageFilterView.h"
+#import "SCTextObjectView.h"
+#import "SCDurationSettingView.h"
+#import "SCFontCell.h"
+#import "SCSettingCell.h"
+#import "SCPhotoAlbumCell.h"
+#import "SCPreviewFlow.h"
+#import "SCSlideItemView.h"
+#import "SCVideoPreview.h"
+
+// import all viewcontrollers
+#import "SCViewController.h"
+#import "SCRootViewController.h"
+#import "SCStartViewController.h"
+#import "SCCreatorTestViewController.h"
+#import "SCHomeViewController.h"
+#import "SCExporterViewController.h"
+#import "SCSettingViewController.h"
+#import "SCVideoEditorViewController.h"
+#import "SCVineAuthenticateViewController.h"
+#import "SCPhotoAlbumViewController.h"
+#import "SCPhotoGridViewController.h"
+#import "SCPreviewViewController.h"
+#import "SCVideoLengthSettingViewController.h"
+#import "SCSharingViewController.h"
+
+//import all composition
+#import "SCComposition.h"
+#import "SCMediaComposition.h"
+#import "SCVideoComposition.h"
+#import "SCSlideComposition.h"
+#import "SCTextComposition.h"
+#import "SCAudioComposition.h"
+#import "SCFilterComposition.h"
+#import "SCSlideShowComposition.h"
+#import "SCVolumeRampComposition.h"
+#import "SCLayerComposition.h"
+
+//import all builder
+#import "SCBasicBuilderComposition.h"
+#import "SCAdvancedBuilderComposition.h"
+#import "SCSlideTransitionInstruction.h"
+#import "SCBasicMediaBuilder.h"
+#import "SCAdvancedMediaBuilder.h"
+
+//import all exporter
+#import "SCExporter.h"
+#import "SCProjectExporter.h"
+#import "SCMediaExporter.h"
+
+//import all Utils
+#import "SCJsonUtil.h"
+#import "SCVideoUtil.h"
+#import "SCImageUtil.h"
+#import "SCTextUtil.h"
+#import "SCUploadUtil.h"
+
+//import all social network headers
+//#import "Instagram.h"
+

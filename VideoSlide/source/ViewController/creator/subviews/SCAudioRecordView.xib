@@ -1,0 +1,229 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="4514" systemVersion="13A603" targetRuntime="iOS.CocoaTouch" variant="6xAndEarlier" propertyAccessControl="none">
+    <dependencies>
+        <deployment defaultVersion="1552" identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="3746"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="1" customClass="SCAudioRecordView">
+            <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <view contentMode="scaleToFill" id="dT5-67-UXa" userLabel="EditView" customClass="SCSoundTrackView">
+                    <rect key="frame" x="0.0" y="320" width="320" height="248"/>
+                    <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
+                    <subviews>
+                        <view contentMode="scaleToFill" id="FpW-i8-3tg">
+                            <rect key="frame" x="0.0" y="0.0" width="320" height="32"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxY="YES"/>
+                            <subviews>
+                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="bg_mainview_toolbar.png" id="U2I-2Y-ZSi">
+                                    <rect key="frame" x="0.0" y="0.0" width="320" height="32"/>
+                                    <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                </imageView>
+                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="cFZ-Zz-Xom">
+                                    <rect key="frame" x="272" y="1" width="48" height="30"/>
+                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                    <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                    <state key="normal" title="Done">
+                                        <color key="titleColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                        <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                    </state>
+                                    <connections>
+                                        <action selector="onAcceptBtn:" destination="dT5-67-UXa" eventType="touchUpInside" id="hEd-4U-FCL"/>
+                                        <action selector="onDoneBtn:" destination="1" eventType="touchUpInside" id="Krj-Jn-No1"/>
+                                    </connections>
+                                </button>
+                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="yD3-Kj-tAb">
+                                    <rect key="frame" x="0.0" y="1" width="67" height="30"/>
+                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                    <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                    <state key="normal" title="Delete">
+                                        <color key="titleColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                        <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                    </state>
+                                    <connections>
+                                        <action selector="onAcceptBtn:" destination="dT5-67-UXa" eventType="touchUpInside" id="ind-cW-B5l"/>
+                                        <action selector="onDelete:" destination="1" eventType="touchUpInside" id="MjI-Bx-JCH"/>
+                                    </connections>
+                                </button>
+                            </subviews>
+                            <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                        </view>
+                        <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="0.5" minValue="0.0" maxValue="1" id="3aM-f7-cKH">
+                            <rect key="frame" x="48" y="79" width="224" height="28"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <color key="minimumTrackTintColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                            <color key="thumbTintColor" red="0.2078431547" green="0.61176472900000001" blue="0.82745105029999999" alpha="1" colorSpace="deviceRGB"/>
+                            <connections>
+                                <action selector="onChangeVolume:" destination="1" eventType="valueChanged" id="JpO-5d-Ipi"/>
+                                <action selector="onVolumeChange:" destination="dT5-67-UXa" eventType="touchUpInside" id="Oxo-YU-0Kd"/>
+                            </connections>
+                        </slider>
+                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="icon_soundtrack_max_volume.png" id="o4i-tU-7u6">
+                            <rect key="frame" x="287" y="88" width="21" height="18"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        </imageView>
+                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="icon_soundtrack_min_volume.png" id="uDr-So-fI6">
+                            <rect key="frame" x="20" y="90" width="9" height="13"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        </imageView>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="d7p-GA-i01">
+                            <rect key="frame" x="136" y="139" width="48" height="48"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                            <state key="normal" image="btn_soundtrack_play.png"/>
+                            <state key="selected" image="btn_soundtrack_stop.png"/>
+                            <connections>
+                                <action selector="onPlay:" destination="1" eventType="touchUpInside" id="9j3-P6-voE"/>
+                                <action selector="onPlayBtn:" destination="dT5-67-UXa" eventType="touchUpInside" id="OtP-nj-HJm"/>
+                            </connections>
+                        </button>
+                    </subviews>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                    <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+                    <connections>
+                        <outlet property="acceptBtn" destination="cFZ-Zz-Xom" id="KDT-z7-Xci"/>
+                        <outlet property="playBtn" destination="d7p-GA-i01" id="8bf-wr-9zy"/>
+                        <outlet property="volumeSlider" destination="3aM-f7-cKH" id="qkc-Qu-tmF"/>
+                    </connections>
+                </view>
+                <view contentMode="scaleToFill" id="7n2-Ns-E9l">
+                    <rect key="frame" x="0.0" y="320" width="320" height="32"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxY="YES"/>
+                    <subviews>
+                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="bg_mainview_toolbar.png" id="XcN-4E-pzd">
+                            <rect key="frame" x="0.0" y="0.0" width="320" height="32"/>
+                            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        </imageView>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="eXZ-jD-N50">
+                            <rect key="frame" x="0.0" y="1" width="80" height="30"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                            <state key="normal" image="btn_recordview_cancel_blue.png">
+                                <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                            </state>
+                            <state key="selected" image="btn_recordview_cancel_gray.png"/>
+                            <connections>
+                                <action selector="onCancelBtn:" destination="1" eventType="touchUpInside" id="s2g-Kz-KaK"/>
+                            </connections>
+                        </button>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="DNe-oc-8uO">
+                            <rect key="frame" x="80" y="1" width="80" height="30"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                            <state key="normal" image="btn_recordview_retake_blue.png">
+                                <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                            </state>
+                            <state key="selected" image="btn_recordview_retake_gray.png"/>
+                            <connections>
+                                <action selector="onReTakeBtn:" destination="1" eventType="touchUpInside" id="QEp-xR-1pd"/>
+                            </connections>
+                        </button>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="Pb3-5p-RSw">
+                            <rect key="frame" x="160" y="1" width="80" height="30"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                            <state key="normal" image="btn_recordview_preview_blue.png">
+                                <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                            </state>
+                            <state key="selected" image="btn_recordview_preview_gray.png"/>
+                            <connections>
+                                <action selector="onPreviewBtn:" destination="1" eventType="touchUpInside" id="x1K-4f-UK3"/>
+                            </connections>
+                        </button>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="iil-Bp-wNr">
+                            <rect key="frame" x="240" y="4" width="80" height="30"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                            <state key="normal" image="btn_recordview_accept_blue.png">
+                                <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                            </state>
+                            <state key="selected" image="btn_recordview_accept_gray.png"/>
+                            <connections>
+                                <action selector="onAcceptBtn:" destination="1" eventType="touchUpInside" id="x7C-XZ-gwf"/>
+                            </connections>
+                        </button>
+                    </subviews>
+                    <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                </view>
+                <view contentMode="scaleToFill" id="u6c-9b-Ncc">
+                    <rect key="frame" x="12" y="106" width="297" height="75"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxY="YES"/>
+                    <subviews>
+                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="bg_recordview_subview.png" id="Qlq-u7-EUU">
+                            <rect key="frame" x="0.0" y="0.0" width="297" height="75"/>
+                            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        </imageView>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="BZd-7R-wLg">
+                            <rect key="frame" x="223" y="34" width="61" height="29"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                            <state key="normal" image="btn_recordview_record_red.png">
+                                <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                            </state>
+                            <state key="selected" image="btn_recordview_stop.png"/>
+                            <connections>
+                                <action selector="onRecordBtn:" destination="1" eventType="touchUpInside" id="Q2c-4A-Ogk"/>
+                            </connections>
+                        </button>
+                        <view contentMode="scaleToFill" id="1ou-1d-4x8">
+                            <rect key="frame" x="12" y="38" width="195" height="24"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <color key="backgroundColor" red="0.17254902422428131" green="0.60000002384185791" blue="0.82745105028152466" alpha="1" colorSpace="deviceRGB"/>
+                        </view>
+                        <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Ready to record" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="Rk7-5m-XXH">
+                            <rect key="frame" x="11" y="4" width="275" height="21"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                            <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="bg_recordview_power.png" id="L2W-Ot-9U7">
+                            <rect key="frame" x="12" y="38" width="195" height="24"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        </imageView>
+                    </subviews>
+                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                </view>
+            </subviews>
+            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <connections>
+                <outlet property="acceptBtn" destination="iil-Bp-wNr" id="I80-aV-1Ks"/>
+                <outlet property="cancelBtn" destination="eXZ-jD-N50" id="BK9-u2-jG7"/>
+                <outlet property="editView" destination="dT5-67-UXa" id="7KR-pn-eJm"/>
+                <outlet property="peakPowerView" destination="1ou-1d-4x8" id="Epx-7Y-C3D"/>
+                <outlet property="playBtn" destination="d7p-GA-i01" id="Vjs-YY-6Zh"/>
+                <outlet property="previewBtn" destination="Pb3-5p-RSw" id="ZAT-3Z-ar2"/>
+                <outlet property="recordBtn" destination="BZd-7R-wLg" id="MmF-8n-JlD"/>
+                <outlet property="retakeBtn" destination="DNe-oc-8uO" id="RMd-Tm-DE3"/>
+                <outlet property="statusLb" destination="Rk7-5m-XXH" id="Xxg-4s-mLY"/>
+                <outlet property="statusView" destination="u6c-9b-Ncc" id="6Qb-OQ-vRg"/>
+                <outlet property="toolBarView" destination="7n2-Ns-E9l" id="bDg-lh-9Mr"/>
+                <outlet property="volumeSlider" destination="3aM-f7-cKH" id="fNC-SK-WHx"/>
+            </connections>
+        </view>
+    </objects>
+    <resources>
+        <image name="bg_mainview_toolbar.png" width="320" height="32"/>
+        <image name="bg_recordview_power.png" width="195" height="24"/>
+        <image name="bg_recordview_subview.png" width="297" height="75"/>
+        <image name="btn_recordview_accept_blue.png" width="80" height="30"/>
+        <image name="btn_recordview_accept_gray.png" width="80" height="30"/>
+        <image name="btn_recordview_cancel_blue.png" width="80" height="30"/>
+        <image name="btn_recordview_cancel_gray.png" width="80" height="30"/>
+        <image name="btn_recordview_preview_blue.png" width="80" height="30"/>
+        <image name="btn_recordview_preview_gray.png" width="80" height="30"/>
+        <image name="btn_recordview_record_red.png" width="61" height="29"/>
+        <image name="btn_recordview_retake_blue.png" width="80" height="30"/>
+        <image name="btn_recordview_retake_gray.png" width="80" height="30"/>
+        <image name="btn_recordview_stop.png" width="61" height="29"/>
+        <image name="btn_soundtrack_play.png" width="48" height="48"/>
+        <image name="btn_soundtrack_stop.png" width="48" height="48"/>
+        <image name="icon_soundtrack_max_volume.png" width="21" height="18"/>
+        <image name="icon_soundtrack_min_volume.png" width="9" height="13"/>
+    </resources>
+</document>

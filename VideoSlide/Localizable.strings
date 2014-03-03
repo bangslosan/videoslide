@@ -1,0 +1,53 @@
+/* 
+  Localizable.strings
+  SlideshowCreator
+
+  Created 11/12/13.
+  Copyright (c) 2013 Doremon. All rights reserved.
+*/
+/* message string */
+"warning" = "Warning";
+"continue" = "Continue";
+"require_input_fullname" = "Please input your fullname.";
+"error_title" = "Error";
+"retry"                 = "Retry";
+"ok"                 = "OK";
+"cancel"                 = "Cancel";
+
+/* Profile section: Login View */
+"Email" = "Email";
+"Password" = "Password";
+
+
+/*  Alert message  */
+"project_export_successfully"       = "Export project successfully";
+"project_export_fail"               = "Export project fail";
+"video_export_successfully"         = "Export video successfully";
+"video_export_fail"                 = "Export video fail";
+
+
+
+/* Progress HUD  */
+
+"processing"                            = "Processing ... ";
+"preparing"                             = "Preparing ... ";
+"loading"                               = "Loading ... ";
+"saving"                                = "Saving ... ";
+"exporting"                             = "Exporting ... ";
+"composing"                             = "Coposing ... ";
+"load_all_projects"                     = "Loading all projects ...";
+"load_insta_info"                       = "Loading info...";
+"download_insta_photos"                 = "Download photos ...";
+"insta_authenticate"                    = "Instagram authenticating...";
+
+
+/* export  */
+
+"Medium"                                = "Medium";
+"Low"                                   = "Low";
+"Hight"                                 = "Hight";
+
+
+/* Soundtrack  */
+
+"song_unvailable"                       = "Can not find song";
