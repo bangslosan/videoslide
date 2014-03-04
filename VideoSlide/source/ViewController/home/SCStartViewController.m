@@ -109,7 +109,7 @@
         }];
     }
     [self.slideShowComposition addSlides:slides];
-    [self.slideShowComposition startCropAllPhotos];
+    [self.slideShowComposition getAllPhotoFromAssetWithoutCrop];
 
 }
 
@@ -153,14 +153,14 @@
 
 #pragma mark - slide show composition protocol
 
-- (void)numberCroppedImage:(int)numberImage
+- (void)numberGotImage:(int)numberImage
 {
     NSLog(@" crop progress %0.2f", (float)numberImage / (float)self.slideShowComposition.slides.count);
     if(self.progressHUD)
         self.progressHUD.progress = (float)numberImage / (float)self.slideShowComposition.slides.count;
 }
 
-- (void)finishCropAllPhoto
+- (void)finishGetAllPhotoFromAsset
 {
     [self hideProgressHUD];
     if(!self.previewFlowView)

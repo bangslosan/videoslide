@@ -378,6 +378,11 @@
 
 }
 
+/****
+ * From slide array Fetch all photos from asset and crop at center
+ *
+ */
+
 - (void)startCropAllPhotos
 {
     if(self.slides.count > self.slideIndex)
@@ -423,6 +428,74 @@
         }
     }
 }
+
+/****
+ * From slide array get all photos from asset without crop
+ *
+ */
+
+- (void)getAllPhotoFromAssetWithoutCrop
+{
+    if(self.slides.count > self.slideIndex)
+    {
+        SCSlideComposition *slide = [self.slides objectAtIndex:self.slideIndex];
+        if (!slide.image)
+        {
+            [SCImageUtil getImageFromURLAsset:slide.assetURL completionBlock:^(UIImage *result)
+             {
+                 slide.image = result;
+                 slide.currentScale = 1;
+                 slide.rectCropped = CGRectMake(0, 0, result.size.width, result.size.height);
+                 if([self getAllImageFromAsset])
+                 {
+                     if([self.delegate respondsToSelector:@selector(finishGetAllPhotoFromAsset)])
+                     {
+                         [self.delegate finishGetAllPhotoFromAsset];
+                     }
+                 }
+                 else
+                 {
+                     self.slideIndex ++;
+                     if([self.delegate respondsToSelector:@selector(numberGotImage:)])
+                     {
+                         [self.delegate numberGotImage:self.slideIndex];
+                     }
+                     [self getAllPhotoFromAssetWithoutCrop];
+                 }
+             } completionBlock:^{
+             }];
+        }
+        else
+        {
+            if([self getAllImageFromAsset])
+            {
+                if([self.delegate respondsToSelector:@selector(finishGetAllPhotoFromAsset)])
+                    [self.delegate finishGetAllPhotoFromAsset];
+            }
+            else
+            {
+                self.slideIndex ++;
+                [self getAllPhotoFromAssetWithoutCrop];
+            }
+        }
+    }
+}
+
+- (BOOL)getAllImageFromAsset
+{
+    int i= 0;
+    for(SCSlideComposition *slideComposition in self.slides)
+    {
+        if(slideComposition.image)
+            i++;
+        if(i == self.slides.count)
+        {
+            return YES;
+        }
+    }
+    return NO;
+};
+
 
 - (BOOL)checkCropStatus
 {

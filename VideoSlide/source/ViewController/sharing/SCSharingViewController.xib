@@ -31,7 +31,7 @@
                     </connections>
                 </button>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="yEZ-ai-Gac">
-                    <rect key="frame" x="99" y="34" width="100" height="100"/>
+                    <rect key="frame" x="110" y="34" width="100" height="100"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <color key="backgroundColor" red="1" green="0.20941744400000001" blue="0.33014532299999999" alpha="1" colorSpace="calibratedRGB"/>
                     <state key="normal" title="Facebook">
@@ -43,7 +43,7 @@
                     </connections>
                 </button>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="Xqj-QZ-NTY">
-                    <rect key="frame" x="99" y="170" width="100" height="100"/>
+                    <rect key="frame" x="110" y="170" width="100" height="100"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <color key="backgroundColor" red="0.21960784310000001" green="0.58823529409999997" blue="0.2274509804" alpha="1" colorSpace="deviceRGB"/>
                     <fontDescription key="fontDescription" type="system" pointSize="17"/>

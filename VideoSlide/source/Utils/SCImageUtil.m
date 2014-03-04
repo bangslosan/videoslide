@@ -419,7 +419,7 @@
              resultBlock:^(ALAsset *asset)
      {
          UIImage *fullImage  = [UIImage imageWithCGImage:asset.defaultRepresentation.fullScreenImage];
-         UIImage *result = [SCImageUtil imageWithCenterCrop:fullImage size:SC_CROP_PHOTO_SIZE];
+         UIImage *result = [SCImageUtil imageWithCenterCrop:fullImage size:size];
          asset = nil;
          fullImage = nil;
          completionBlock(result);
@@ -429,6 +429,25 @@
                 [SVProgressHUD dismiss];
         failureBlock();
         } ];
+}
+
+
+
++ (void)getImageFromURLAsset:(NSURL*)assetURL  completionBlock:(void (^)(UIImage *result))completionBlock  completionBlock:(void (^)(void))failureBlock
+{
+    ALAssetsLibrary *library = [[ALAssetsLibrary alloc]init];
+    [library assetForURL:assetURL
+             resultBlock:^(ALAsset *asset)
+     {
+         UIImage *fullImage  = [UIImage imageWithCGImage:asset.defaultRepresentation.fullScreenImage];
+         asset = nil;
+         completionBlock(fullImage);
+         
+     }
+            failureBlock:^(NSError *error){
+                [SVProgressHUD dismiss];
+                failureBlock();
+            } ];
 }
 
 

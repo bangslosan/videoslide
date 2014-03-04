@@ -305,6 +305,19 @@
 
 #pragma mark - instance methods
 
+- (void)cropImageWithRect:(CGRect)rect andScale:(float)scale
+{
+    if(rect.origin.x == rect.origin.y == rect.size.width ==0 || scale <= 0)
+        return;
+    
+    if(self.image)
+    {
+        self.image = [SCImageUtil cropImageWith:self.image rect:rect];
+        self.image = [SCImageUtil imageWithImage:self.image scaledToSize:CGSizeMake(self.image.size.width * scale, self.image.size.height * scale)];
+        self.isCropped = YES;
+    }
+}
+
 - (void)updateSlide:(float)duration startTrans:(float)startTrans endTrans:(float)endTrans transType:(SCVideoTransitionType)transType
 {
     self.startTimeInTimeline =  kCMTimeZero;
@@ -363,7 +376,6 @@
             }
             return nil;
         }
-        
     }
     
     return nil;
