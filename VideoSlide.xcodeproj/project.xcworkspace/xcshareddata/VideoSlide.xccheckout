@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>IDESourceControlProjectFavoriteDictionaryKey</key>
+	<false/>
+	<key>IDESourceControlProjectIdentifier</key>
+	<string>3F75423F-C849-4C68-9A6F-2ED730A59E30</string>
+	<key>IDESourceControlProjectName</key>
+	<string>VideoSlide</string>
+	<key>IDESourceControlProjectOriginsDictionary</key>
+	<dict>
+		<key>E76BFE32-6BF9-432D-B215-2C49AE7F33AC</key>
+		<string>https://github.com/hnth2507/videoslide.git</string>
+	</dict>
+	<key>IDESourceControlProjectPath</key>
+	<string>VideoSlide.xcodeproj/project.xcworkspace</string>
+	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
+	<dict>
+		<key>E76BFE32-6BF9-432D-B215-2C49AE7F33AC</key>
+		<string>../..</string>
+	</dict>
+	<key>IDESourceControlProjectURL</key>
+	<string>https://github.com/hnth2507/videoslide.git</string>
+	<key>IDESourceControlProjectVersion</key>
+	<integer>110</integer>
+	<key>IDESourceControlProjectWCCIdentifier</key>
+	<string>E76BFE32-6BF9-432D-B215-2C49AE7F33AC</string>
+	<key>IDESourceControlProjectWCConfigurations</key>
+	<array>
+		<dict>
+			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
+			<string>public.vcs.git</string>
+			<key>IDESourceControlWCCIdentifierKey</key>
+			<string>E76BFE32-6BF9-432D-B215-2C49AE7F33AC</string>
+			<key>IDESourceControlWCCName</key>
+			<string>videoslide</string>
+		</dict>
+	</array>
+</dict>
+</plist>
