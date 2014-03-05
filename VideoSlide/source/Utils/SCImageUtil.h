@@ -38,4 +38,8 @@
 
 + (void)cropImageFromURLAsset:(NSURL*)assetURL  size:(CGSize)size completionBlock:(void (^)(UIImage *result))completionBlock  completionBlock:(void (^)(void))failureBlock;
 
++ (void)getImageFromURLAsset:(NSURL*)assetURL  completionBlock:(void (^)(UIImage *result))completionBlock  completionBlock:(void (^)(void))failureBlock;
+
+
+
 @end

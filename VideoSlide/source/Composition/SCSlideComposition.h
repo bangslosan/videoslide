@@ -26,12 +26,10 @@ typedef void (^success)(SCVideoComposition*);
 @property (nonatomic, strong) UIImage       *thumbnailImage;
 @property (nonatomic, strong) UIImage       *originalImage; // for Re-Crop function. {nil: photo from Camera Roll, can get original by assetURL (for reduce memory purposel; !nil: photo from Camera/Instagram)}
 
-@property (nonatomic, assign) CGRect        rectCropped;
-
 @property (nonatomic, strong) NSURL         *imageURL;
 @property (nonatomic, strong) NSURL         *thumbnailURL;
 
-
+@property (nonatomic, assign) CGRect        rectCropped;
 @property (nonatomic, assign) float         currentScale;
 @property (nonatomic, assign) BOOL          isCropped;
 @property (nonatomic, assign) BOOL          needToRefreshThumbnail;
@@ -65,8 +63,7 @@ typedef void (^success)(SCVideoComposition*);
 
 - (SCVideoComposition*)convertToVideoComposition:(BOOL)forExport withDir:(NSURL*)dir;
 
-
 - (void)updateSlide:(float)duration startTrans:(float)startTrans endTrans:(float)endTrans transType:(SCVideoTransitionType)transType;
 
-
+- (void)cropImageWithRect:(CGRect)rect andScale:(float)scale;
 @end

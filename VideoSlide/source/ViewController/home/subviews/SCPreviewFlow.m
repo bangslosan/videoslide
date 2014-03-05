@@ -86,7 +86,7 @@
         self.timelineScrollView.clipsToBounds = NO;
         self.clipsToBounds = NO;
         
-        self.previewScrollView.maximumZoomScale = 4;
+        self.previewScrollView.maximumZoomScale = 5;
         self.previewScrollView.minimumZoomScale = 1;
         self.previewScrollView.delegate = self;
         
@@ -353,6 +353,7 @@
      }completion:^(BOOL finished) {
          self.currentItem = nil;
          self.currentSortingIndex = SC_GRIDVIEW_INVALID_INDEX;
+         
      }];
 }
 #pragma mark - scrollview delegate
@@ -364,13 +365,28 @@
 
 -(void)scrollViewWillBeginZooming:(UIScrollView *)scrollView withView:(UIView *)view
 {
-    
+    NSLog(@"Final pos [%.2f][%.2f]", scrollView.contentOffset.x,scrollView.contentOffset.y);
 }
 
 - (void)scrollViewDidEndZooming:(UIScrollView *)scrollView withView:(UIView *)view atScale:(CGFloat)scale
 {
-    
+    NSLog(@"Final pos [%.2f][%.2f] and scale [%.2f]", scrollView.contentOffset.x,scrollView.contentOffset.y,scale);
+    NSLog(@"Image pos [%.2f][%.2f]", scrollView.contentOffset.x/scale,scrollView.contentOffset.y/scale);
+
 }
+
+- (void)scrollViewDidEndDragging:(UIScrollView *)scrollView willDecelerate:(BOOL)decelerate
+{
+    NSLog(@"Final pos [%.2f][%.2f]", scrollView.contentOffset.x,scrollView.contentOffset.y);
+}
+
+- (void)scrollViewDidEndDecelerating:(UIScrollView *)scrollView
+{
+    NSLog(@"Final pos [%.2f][%.2f]", scrollView.contentOffset.x,scrollView.contentOffset.y);
+
+}
+
+
 
 #pragma mark GestureRecognizer delegate
 

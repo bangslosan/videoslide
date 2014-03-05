@@ -93,7 +93,7 @@
 
 #define SC_TIME_RULER_POINT_SIZE                CGSizeMake(30,  11)
 #define SC_THUMBNAIL_PHOTO_VIEW_SIZE            CGSizeMake(160, 160)
-#define SC_CROP_PHOTO_SIZE                      CGSizeMake(480, 480)
+#define SC_CROP_PHOTO_SIZE                      CGSizeMake(640, 640)
 #define SC_PROJECT_DETAIL_ITEM_SIZE             CGSizeMake(303, 355)
 #define SC_PROJECT_ITEM_SIZE                    CGSizeMake(148, 182)
 #define SC_GRIDVIEW_INVALID_INDEX               -1

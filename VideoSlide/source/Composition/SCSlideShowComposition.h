@@ -17,7 +17,9 @@
 @optional
 - (void)prebuildProgressValue:(float)currentValue totalValue:(float)totalValue;
 - (void)finishCropAllPhoto;
+- (void)finishGetAllPhotoFromAsset;
 - (void)numberCroppedImage:(int)numberImage;
+- (void)numberGotImage:(int)numberImage;
 
 @end
 
@@ -65,5 +67,7 @@
 - (void)updateAsynchronouslyWithCompletionHandler:(void (^)(void))completionBlock;
 
 - (void)startCropAllPhotos;
+- (void)getAllPhotoFromAssetWithoutCrop;
+
 @end
 
