@@ -4811,8 +4811,8 @@
 			buildSettings = {
 				CLANG_CXX_LANGUAGE_STANDARD = "compiler-default";
 				CLANG_CXX_LIBRARY = "compiler-default";
-				CODE_SIGN_IDENTITY = "iPhone Developer: Phuoc Phung (8L2PAXDB24)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Phuoc Phung (8L2PAXDB24)";
+				CODE_SIGN_IDENTITY = "iPhone Developer: Phuoc Phung (LB9CNTFC88)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Phuoc Phung (LB9CNTFC88)";
 				FRAMEWORK_SEARCH_PATHS = "$(inherited)";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "VideoSlide/VideoSlide-Prefix.pch";
@@ -4824,7 +4824,7 @@
 					"-all_load",
 				);
 				PRODUCT_NAME = VideoSlide;
-				PROVISIONING_PROFILE = "65C34430-C6FD-4855-8AD7-B861562113E2";
+				PROVISIONING_PROFILE = "4336AB29-5928-4411-9EFE-7D2E6CA30F25";
 				TARGETED_DEVICE_FAMILY = 1;
 				WRAPPER_EXTENSION = app;
 			};
@@ -4835,8 +4835,8 @@
 			buildSettings = {
 				CLANG_CXX_LANGUAGE_STANDARD = "compiler-default";
 				CLANG_CXX_LIBRARY = "compiler-default";
-				CODE_SIGN_IDENTITY = "iPhone Developer: Phuoc Phung (8L2PAXDB24)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Phuoc Phung (8L2PAXDB24)";
+				CODE_SIGN_IDENTITY = "iPhone Developer: Phuoc Phung (LB9CNTFC88)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Phuoc Phung (LB9CNTFC88)";
 				FRAMEWORK_SEARCH_PATHS = "$(inherited)";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "VideoSlide/VideoSlide-Prefix.pch";
@@ -4848,7 +4848,7 @@
 					"-all_load",
 				);
 				PRODUCT_NAME = VideoSlide;
-				PROVISIONING_PROFILE = "65C34430-C6FD-4855-8AD7-B861562113E2";
+				PROVISIONING_PROFILE = "4336AB29-5928-4411-9EFE-7D2E6CA30F25";
 				TARGETED_DEVICE_FAMILY = 1;
 				WRAPPER_EXTENSION = app;
 			};
