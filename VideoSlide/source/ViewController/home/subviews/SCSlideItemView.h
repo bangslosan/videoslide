@@ -34,5 +34,6 @@
 - (id)initWithFrame:(CGRect)frame slide:(SCSlideComposition*)slideComposition;
 - (void)updateWith:(CGPoint)pos index:(int)index;
 - (void)refreshPhoto;
+- (void)setHightLight:(BOOL)hightlight;
 
 @end

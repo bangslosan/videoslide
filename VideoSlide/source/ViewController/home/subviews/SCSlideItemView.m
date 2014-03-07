@@ -123,6 +123,12 @@
     
 }
 
+- (void)setHightLight:(BOOL)hightlight
+{
+    
+}
+
+
 #pragma mark - gesture
 
 - (void)onTap:(UITapGestureRecognizer *)gesture

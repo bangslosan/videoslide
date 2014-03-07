@@ -42,18 +42,40 @@
     self.slideShowComposition = [self.lastData objectForKey:SC_TRANSIT_KEY_SLIDE_SHOW_DATA];
     if(self.slideShowComposition)
     {
-        NSMutableArray *images = [[NSMutableArray alloc]init];
-        for(SCSlideComposition *slide in self.slideShowComposition.slides)
-        {
-            if(slide.image)
-            {
-                [images addObject:slide.image];
-            }
-        }
-        dispatch_async( dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
+            dispatch_async( dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
             // Add code here to do background processing
             //
             //
+            NSMutableArray *images = [[NSMutableArray alloc]init];
+            for(SCSlideComposition *slide in self.slideShowComposition.slides)
+            {
+                if(slide.image)
+                {
+                    UIImage *image;
+                    if(slide.currentScale == 1)
+                        image = slide.image;
+                    else
+                    {
+                        if(slide.currentScale < 1)
+                        {
+                            image = [SCImageUtil imageWithImage:slide.image scaledToSize:CGSizeMake(slide.image.size.width * slide.currentScale, slide.image.size.height * slide.currentScale)];
+                            //UIImageWriteToSavedPhotosAlbum(image, nil, nil, nil);
+                            image = [SCImageUtil cropImageWith:image rect:slide.rectCropped];
+                            //UIImageWriteToSavedPhotosAlbum(image, nil, nil, nil);
+                        }
+                        else
+                        {
+                            image = [SCImageUtil cropImageWith:image rect:slide.rectCropped];
+                            //UIImageWriteToSavedPhotosAlbum(image, nil, nil, nil);
+                            image = [SCImageUtil imageWithImage:slide.image scaledToSize:CGSizeMake(slide.image.size.width * slide.currentScale, slide.image.size.height * slide.currentScale)];
+                            //UIImageWriteToSavedPhotosAlbum(image, nil, nil, nil);
+                        }
+
+                    }
+                    [images addObject:image];
+                }
+            }
+
             if(images.count > 0)
             {
                 NSURL *outPut = [SCFileManager createURLFromTempWithName:[NSString stringWithFormat:@"%@.%@",SC_OUTPUT_VIDEO,SC_MP4]];
