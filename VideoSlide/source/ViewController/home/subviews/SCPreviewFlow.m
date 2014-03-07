@@ -126,11 +126,13 @@
             item.delegate = self;
             item.mainSuperView = self.mainSuperView;
             item.indexLb.text = [NSString stringWithFormat:@"%d",i];
+            [self calculateSlideCropRect:item.slideComposition withVisibleRect:CGRectMake(0, 0, SC_CROP_PHOTO_SIZE.width, SC_CROP_PHOTO_SIZE.height) scale:1];
             [self.timelineContentView addSubview:item];
             //get the first slide to preview
             if(i == 0)
             {
                 [self.previewImgView setImage:slide.image];
+                self.currentItem = item;
             }
             i++;
         }
@@ -225,7 +227,6 @@
                  {
                      [self didEndSorting];
                  }
-                 self.currentItem = nil;
              }];
         }
         _autoScrollActive = NO;
@@ -326,6 +327,11 @@
 
 - (void)didDeleteCurrentSlideItem
 {
+    int currentItemIndex = [self.slides indexOfObject:self.currentItem.slideComposition];
+    if(currentItemIndex > 1)
+        currentItemIndex = currentItemIndex - 1;
+    if(currentItemIndex == 1)
+        currentItemIndex = 0;
     //remove slide /video from global array
     if(self.currentItem)
     {
@@ -354,6 +360,15 @@
          self.currentItem = nil;
          self.currentSortingIndex = SC_GRIDVIEW_INVALID_INDEX;
          
+         if(currentItemIndex < self.slides.count)
+         {
+             SCSlideComposition *slide = [self.slides objectAtIndex:currentItemIndex];
+             self.currentItem = [self itemWithSlide:slide];
+             if(self.currentItem)
+                 [self selectItemToPreview:self.currentItem.slideComposition];
+         }
+
+         
      }];
 }
 #pragma mark - scrollview delegate
@@ -372,17 +387,34 @@
 {
     NSLog(@"Final pos [%.2f][%.2f] and scale [%.2f]", scrollView.contentOffset.x,scrollView.contentOffset.y,scale);
     NSLog(@"Image pos [%.2f][%.2f]", scrollView.contentOffset.x/scale,scrollView.contentOffset.y/scale);
+    if(self.currentItem)
+    {
+        self.currentItem.slideComposition.currentScale = scale;
+        self.currentItem.slideComposition.rectCropped = CGRectMake(scrollView.contentOffset.x/scale, scrollView.contentOffset.y/scale, SC_CROP_PHOTO_SIZE.width / scale, SC_CROP_PHOTO_SIZE.height / scale);
+    }
 
 }
 
 - (void)scrollViewDidEndDragging:(UIScrollView *)scrollView willDecelerate:(BOOL)decelerate
 {
     NSLog(@"Final pos [%.2f][%.2f]", scrollView.contentOffset.x,scrollView.contentOffset.y);
+    if(self.currentItem)
+    {
+        float scale = self.currentItem.slideComposition.currentScale ;
+        self.currentItem.slideComposition.rectCropped = CGRectMake(scrollView.contentOffset.x/scale, scrollView.contentOffset.y/scale, SC_CROP_PHOTO_SIZE.width / scale, SC_CROP_PHOTO_SIZE.height / scale);
+    }
+
 }
 
 - (void)scrollViewDidEndDecelerating:(UIScrollView *)scrollView
 {
     NSLog(@"Final pos [%.2f][%.2f]", scrollView.contentOffset.x,scrollView.contentOffset.y);
+    if(self.currentItem)
+    {
+        float scale = self.currentItem.slideComposition.currentScale ;
+        self.currentItem.slideComposition.rectCropped = CGRectMake(scrollView.contentOffset.x/scale, scrollView.contentOffset.y/scale, SC_CROP_PHOTO_SIZE.width / scale, SC_CROP_PHOTO_SIZE.height / scale);
+    }
+
 
 }
 
@@ -405,11 +437,29 @@
 
 - (void)didSelectItemWithPosition:(CGPoint)pos slideComposition:(SCSlideComposition *)slide
 {
-    [self.previewImgView setImage:slide.image];
-    [self.previewScrollView setZoomScale:1];
+    for(SCSlideItemView *itemView in self.timelineContentView.subviews)
+    {
+        if(itemView.slideComposition == slide)
+        {
+            self.currentItem = itemView;
+        }
+    }
+    [self selectItemToPreview:slide];
 }
 
 #pragma mark - util
+
+- (SCSlideItemView*)itemWithSlide:(SCSlideComposition*)slide
+{
+    for(SCSlideItemView *item in self.timelineContentView.subviews)
+    {
+        if(item.slideComposition == slide)
+        {
+            return  item;
+        }
+    }
+    return nil;
+}
 
 - (SCSlideItemView*)itemWithIndex:(int)index
 {
@@ -474,6 +524,31 @@
     return result;
 }
 
+- (void)selectItemToPreview:(SCSlideComposition*)slide
+{
+    [self.previewImgView setImage:slide.image];
+    [self.previewScrollView setZoomScale:1];
+}
+
+- (void)calculateSlideCropRect:(SCSlideComposition*)slide withVisibleRect:(CGRect)visibleRect scale:(float)scale
+{
+    if(slide.currentScale == 1)
+    {
+        CGSize imgSize = slide.image.size;
+        float sizeRate = imgSize.width >= imgSize.height ? (visibleRect.size.width /imgSize.width):((visibleRect.size.height / imgSize.height));
+        
+        CGRect imgCropRect = CGRectMake(visibleRect.origin.x - ((visibleRect.size.width/2) - (imgSize.width * sizeRate)/2),
+                                     visibleRect.origin.y - ((visibleRect.size.height/2) - (imgSize.height * sizeRate)/2),
+                                     visibleRect.size.width,
+                                     visibleRect.size.height);
+
+        
+        slide.rectCropped = imgCropRect;
+        slide.currentScale = sizeRate;
+    }
+    
+    
+}
 
 
 

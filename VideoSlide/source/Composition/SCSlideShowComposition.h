@@ -40,6 +40,8 @@
 @property (nonatomic)         BOOL           isAdvanced;
 @property (nonatomic)         BOOL           isComposing;
 @property (nonatomic)         BOOL           iSOverWrite;
+@property (nonatomic)         int            slideIndex;
+
 @property (nonatomic)         CMTime         totalDuration;
 
 @property (nonatomic, strong) NSURL          *exportURL;

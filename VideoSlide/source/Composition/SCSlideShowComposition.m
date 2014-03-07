@@ -11,7 +11,6 @@
 
 @interface SCSlideShowComposition ()
 
-@property (nonatomic) int slideIndex;
 
 @end
 
@@ -35,6 +34,7 @@
 @synthesize deleteItems = _deleteItems;
 @synthesize iSOverWrite = _iSOverWrite;
 @synthesize mediaExportQuality = _mediaExportQuality;
+@synthesize slideIndex = _slideIndex;
 
 - (id)init
 {

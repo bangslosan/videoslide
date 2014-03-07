@@ -48,7 +48,6 @@
     [super viewDidLoad];
  
     [SCFileManager deleteAllFileFromTemp];
-    self.slides = [[NSMutableArray alloc] init];
     // Do any additional setup after loading the view from its nib.
     self.nextBtn.hidden = YES;
 }
@@ -84,9 +83,6 @@
 {
     [self showProgressHUDWithType:MBProgressHUDModeDeterminate andMessage:nil];
     
-    if(self.slides)
-        [self.slides addObjectsFromArray:slides];
-
     if(!self.slideShowComposition)
     {
         self.slideShowComposition = [[SCSlideShowComposition alloc] init];
@@ -165,7 +161,7 @@
     [self hideProgressHUD];
     if(!self.previewFlowView)
     {
-        self.previewFlowView = [[SCPreviewFlow alloc]initWith:self.slides];
+        self.previewFlowView = [[SCPreviewFlow alloc]initWith:self.slideShowComposition.slides];
         [self.previewFlowView setFrame:CGRectMake(0, 0, self.previewFlowView.frame.size.width, self.previewFlowView.frame.size.height)];
         [self.view addSubview:self.previewFlowView];
         self.previewFlowView.alpha = 0;
@@ -194,7 +190,7 @@
     else
     {
         //add more slide item to media time line
-        [self.previewFlowView updateWithSlides:self.slides];
+        [self.previewFlowView updateWithSlides:self.slideShowComposition.slides];
     }
 }
 
