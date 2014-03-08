@@ -450,8 +450,28 @@
             } ];
 }
 
-
-
++ (UIImage *)getSubImageFrom:(UIImage*)image rect:(CGRect)rect
+{
+    UIGraphicsBeginImageContext(rect.size);
+    CGContextRef context = UIGraphicsGetCurrentContext();
+    
+    // translated rectangle for drawing sub image
+    CGRect drawRect = CGRectMake(-rect.origin.x, -rect.origin.y, image.size.width, image.size.height);
+    
+    // clip to the bounds of the image context
+    // not strictly necessary as it will get clipped anyway?
+    CGContextClipToRect(context, CGRectMake(0, 0, rect.size.width, rect.size.height));
+    
+    // draw image
+    [image drawInRect:drawRect];
+    
+    // grab image
+    UIImage* croppedImage = UIGraphicsGetImageFromCurrentImageContext();
+    
+    UIGraphicsEndImageContext();
+    
+    return croppedImage;
+}
 
 
 

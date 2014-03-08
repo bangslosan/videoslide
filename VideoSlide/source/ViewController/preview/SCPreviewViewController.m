@@ -55,16 +55,13 @@
                     if(slide.currentScale <= 1)
                     {
                         image = [SCImageUtil imageWithImage:slide.image scaledToSize:CGSizeMake(slide.image.size.width * slide.currentScale, slide.image.size.height * slide.currentScale)];
-                        //UIImageWriteToSavedPhotosAlbum(image, nil, nil, nil);
                         image = [SCImageUtil cropImageWith:image rect:slide.rectCropped];
                         //UIImageWriteToSavedPhotosAlbum(image, nil, nil, nil);
                     }
                     else
                     {
-                        image = [SCImageUtil cropImageWith:slide.image rect:slide.rectCropped];
-                        UIImageWriteToSavedPhotosAlbum(image, nil, nil, nil);
-                        //image = [SCImageUtil imageWithImage:image scaledToSize:CGSizeMake(slide.image.size.width * slide.currentScale, slide.image.size.height * slide.currentScale)];
-                        //UIImageWriteToSavedPhotosAlbum(image, nil, nil, nil);
+                        image = [SCImageUtil getSubImageFrom:slide.image rect:slide.rectCropped];
+                        //image = [SCImageUtil imageWithImage:image scaledToSize:CGSizeMake(640, 640)];
                     }
 
                     [images addObject:image];
@@ -105,7 +102,6 @@
 
             });
         });
-    
     }
 }
 

@@ -30,6 +30,8 @@ typedef void (^success)(SCVideoComposition*);
 @property (nonatomic, strong) NSURL         *thumbnailURL;
 
 @property (nonatomic, assign) CGRect        rectCropped;
+@property (nonatomic, assign) CGPoint        relativeCroppedPos;
+
 @property (nonatomic, assign) float         currentScale;
 @property (nonatomic, assign) BOOL          isCropped;
 @property (nonatomic, assign) BOOL          needToRefreshThumbnail;

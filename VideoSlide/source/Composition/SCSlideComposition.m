@@ -29,6 +29,7 @@
 @synthesize needToRefreshThumbnail = _needToRefreshThumbnail;
 @synthesize rectCropped = _rectCropped;
 @synthesize currentScale = _currentScale;
+@synthesize relativeCroppedPos = _relativeCroppedPos;
 
 - (id)init
 {
