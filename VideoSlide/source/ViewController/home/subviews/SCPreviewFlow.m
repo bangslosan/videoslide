@@ -527,7 +527,7 @@
 - (void)selectItemToPreview:(SCSlideComposition*)slide
 {
     [self.previewImgView setImage:slide.image];
-    [self.previewScrollView setZoomScale:1];
+    [self.previewScrollView setZoomScale:1]; 
 }
 
 - (void)calculateSlideCropRect:(SCSlideComposition*)slide withVisibleRect:(CGRect)visibleRect scale:(float)scale
