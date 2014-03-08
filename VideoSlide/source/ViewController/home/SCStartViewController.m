@@ -47,9 +47,14 @@
 {
     [super viewDidLoad];
  
-    [SCFileManager deleteAllFileFromTemp];
     // Do any additional setup after loading the view from its nib.
     self.nextBtn.hidden = YES;
+}
+
+- (void)viewDidAppear:(BOOL)animated
+{
+    [super viewDidAppear:animated];
+    [SCFileManager deleteAllFileFromTemp];
 }
 
 - (void)didReceiveMemoryWarning

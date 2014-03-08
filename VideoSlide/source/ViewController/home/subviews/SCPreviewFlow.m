@@ -86,7 +86,7 @@
         self.timelineScrollView.clipsToBounds = NO;
         self.clipsToBounds = NO;
         
-        self.previewScrollView.maximumZoomScale = 5;
+        self.previewScrollView.maximumZoomScale = 8;
         self.previewScrollView.minimumZoomScale = 1;
         self.previewScrollView.delegate = self;
         
@@ -380,28 +380,30 @@
 
 -(void)scrollViewWillBeginZooming:(UIScrollView *)scrollView withView:(UIView *)view
 {
-    NSLog(@"Final pos [%.2f][%.2f]", scrollView.contentOffset.x,scrollView.contentOffset.y);
+    //NSLog(@"Final pos [%.2f][%.2f]", scrollView.contentOffset.x,scrollView.contentOffset.y);
 }
 
 - (void)scrollViewDidEndZooming:(UIScrollView *)scrollView withView:(UIView *)view atScale:(CGFloat)scale
 {
-    NSLog(@"Final pos [%.2f][%.2f] and scale [%.2f]", scrollView.contentOffset.x,scrollView.contentOffset.y,scale);
-    NSLog(@"Image pos [%.2f][%.2f]", scrollView.contentOffset.x/scale,scrollView.contentOffset.y/scale);
+    //NSLog(@"Final pos [%.2f][%.2f] and scale [%.2f]", scrollView.contentOffset.x,scrollView.contentOffset.y,scale);
+    //NSLog(@"Image pos [%.2f][%.2f]", scrollView.contentOffset.x/scale,scrollView.contentOffset.y/scale);
     if(self.currentItem)
     {
-        self.currentItem.slideComposition.currentScale = scale;
-        self.currentItem.slideComposition.rectCropped = CGRectMake(scrollView.contentOffset.x/scale, scrollView.contentOffset.y/scale, SC_CROP_PHOTO_SIZE.width / scale, SC_CROP_PHOTO_SIZE.height / scale);
+       // self.currentItem.slideComposition.currentScale = scale;
+       // self.currentItem.slideComposition.rectCropped = CGRectMake(scrollView.contentOffset.x/scale, scrollView.contentOffset.y/scale, SC_CROP_PHOTO_SIZE.width / scale, SC_CROP_PHOTO_SIZE.height / scale);
+        
+        [self calculateSlideCropRect:self.currentItem.slideComposition withVisibleRect:CGRectMake(scrollView.contentOffset.x*2, scrollView.contentOffset.y *2, scrollView.contentSize.width*2, scrollView.contentSize.height*2) scale:scale];
     }
 
 }
 
 - (void)scrollViewDidEndDragging:(UIScrollView *)scrollView willDecelerate:(BOOL)decelerate
 {
-    NSLog(@"Final pos [%.2f][%.2f]", scrollView.contentOffset.x,scrollView.contentOffset.y);
+    //NSLog(@"Final pos [%.2f][%.2f]", scrollView.contentOffset.x,scrollView.contentOffset.y);
     if(self.currentItem)
     {
-        float scale = self.currentItem.slideComposition.currentScale ;
-        self.currentItem.slideComposition.rectCropped = CGRectMake(scrollView.contentOffset.x/scale, scrollView.contentOffset.y/scale, SC_CROP_PHOTO_SIZE.width / scale, SC_CROP_PHOTO_SIZE.height / scale);
+       // float scale = self.currentItem.slideComposition.currentScale ;
+        //self.currentItem.slideComposition.rectCropped = CGRectMake(scrollView.contentOffset.x/scale, scrollView.contentOffset.y/scale, SC_CROP_PHOTO_SIZE.width / scale, SC_CROP_PHOTO_SIZE.height / scale);
     }
 
 }
@@ -411,8 +413,8 @@
     NSLog(@"Final pos [%.2f][%.2f]", scrollView.contentOffset.x,scrollView.contentOffset.y);
     if(self.currentItem)
     {
-        float scale = self.currentItem.slideComposition.currentScale ;
-        self.currentItem.slideComposition.rectCropped = CGRectMake(scrollView.contentOffset.x/scale, scrollView.contentOffset.y/scale, SC_CROP_PHOTO_SIZE.width / scale, SC_CROP_PHOTO_SIZE.height / scale);
+       // float scale = self.currentItem.slideComposition.currentScale ;
+       // self.currentItem.slideComposition.rectCropped = CGRectMake(scrollView.contentOffset.x/scale, scrollView.contentOffset.y/scale, SC_CROP_PHOTO_SIZE.width / scale, SC_CROP_PHOTO_SIZE.height / scale);
     }
 
 
@@ -532,19 +534,39 @@
 
 - (void)calculateSlideCropRect:(SCSlideComposition*)slide withVisibleRect:(CGRect)visibleRect scale:(float)scale
 {
-    if(slide.currentScale == 1)
+    //if(slide.currentScale == 1)
     {
+        NSLog(@"[offset pos : %@", NSStringFromCGPoint(visibleRect.origin));
         CGSize imgSize = slide.image.size;
-        float sizeRate = imgSize.width >= imgSize.height ? (visibleRect.size.width /imgSize.width):((visibleRect.size.height / imgSize.height));
-        
-        CGRect imgCropRect = CGRectMake(visibleRect.origin.x - ((visibleRect.size.width/2) - (imgSize.width * sizeRate)/2),
-                                     visibleRect.origin.y - ((visibleRect.size.height/2) - (imgSize.height * sizeRate)/2),
-                                     visibleRect.size.width,
-                                     visibleRect.size.height);
+        NSLog(@"[source image size : %@", NSStringFromCGSize(imgSize));
+        float sizeRate = imgSize.width >= imgSize.height ? (640 /imgSize.width):((640 / imgSize.height));
+        CGSize relativeImgSize = CGSizeMake(imgSize.width * sizeRate, imgSize.height * sizeRate);
 
         
-        slide.rectCropped = imgCropRect;
-        slide.currentScale = sizeRate;
+        CGRect relativeRect = CGRectMake(visibleRect.origin.x/scale - (visibleRect.size.width/(2*scale)- relativeImgSize.width/2 ),
+                                         visibleRect.origin.y/scale - (visibleRect.size.height/(2*scale) - relativeImgSize.height/2),
+                                         visibleRect.size.width / scale,
+                                         visibleRect.size.height / scale);
+        NSLog(@"[scale : %.2f]", scale);
+
+        NSLog(@"[Relative crop rect : %@]", NSStringFromCGRect(relativeRect));
+        if(scale == 1)
+        {
+            slide.rectCropped = relativeRect;
+            slide.currentScale =  scale * sizeRate;
+        }
+        else
+        {
+            slide.rectCropped = CGRectMake(0, 0, 640, 640);/*CGRectMake(0,-100, 640 * 1 /1, 640 *1 / 1);CGRectMake(relativeRect.origin.x / sizeRate,
+                                           relativeRect.origin.y / sizeRate,
+                                           relativeRect.size.width / sizeRate,
+                                           relativeRect.size.height/ sizeRate
+                                           );*/
+            slide.currentScale =  scale;
+
+        }
+        NSLog(@"[image crop rect : %@]", NSStringFromCGRect(slide.rectCropped));
+        
     }
     
     
