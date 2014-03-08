@@ -52,26 +52,21 @@
                 if(slide.image)
                 {
                     UIImage *image;
-                    if(slide.currentScale == 1)
-                        image = slide.image;
+                    if(slide.currentScale <= 1)
+                    {
+                        image = [SCImageUtil imageWithImage:slide.image scaledToSize:CGSizeMake(slide.image.size.width * slide.currentScale, slide.image.size.height * slide.currentScale)];
+                        //UIImageWriteToSavedPhotosAlbum(image, nil, nil, nil);
+                        image = [SCImageUtil cropImageWith:image rect:slide.rectCropped];
+                        //UIImageWriteToSavedPhotosAlbum(image, nil, nil, nil);
+                    }
                     else
                     {
-                        if(slide.currentScale < 1)
-                        {
-                            image = [SCImageUtil imageWithImage:slide.image scaledToSize:CGSizeMake(slide.image.size.width * slide.currentScale, slide.image.size.height * slide.currentScale)];
-                            //UIImageWriteToSavedPhotosAlbum(image, nil, nil, nil);
-                            image = [SCImageUtil cropImageWith:image rect:slide.rectCropped];
-                            //UIImageWriteToSavedPhotosAlbum(image, nil, nil, nil);
-                        }
-                        else
-                        {
-                            image = [SCImageUtil cropImageWith:image rect:slide.rectCropped];
-                            //UIImageWriteToSavedPhotosAlbum(image, nil, nil, nil);
-                            image = [SCImageUtil imageWithImage:slide.image scaledToSize:CGSizeMake(slide.image.size.width * slide.currentScale, slide.image.size.height * slide.currentScale)];
-                            //UIImageWriteToSavedPhotosAlbum(image, nil, nil, nil);
-                        }
-
+                        image = [SCImageUtil cropImageWith:slide.image rect:slide.rectCropped];
+                        UIImageWriteToSavedPhotosAlbum(image, nil, nil, nil);
+                        //image = [SCImageUtil imageWithImage:image scaledToSize:CGSizeMake(slide.image.size.width * slide.currentScale, slide.image.size.height * slide.currentScale)];
+                        //UIImageWriteToSavedPhotosAlbum(image, nil, nil, nil);
                     }
+
                     [images addObject:image];
                 }
             }
@@ -91,6 +86,10 @@
                 // results of the background processing
                 
                 SCVideoComposition *videoComposition = [[SCVideoComposition alloc]initWithURL:self.slideShowComposition.exportURL];
+                if(self.slideShowComposition.videos.count > 0)
+                {
+                    [self.slideShowComposition.videos removeAllObjects];
+                }
                 [self.slideShowComposition.videos addObject:videoComposition];
                 SCBasicMediaBuilder *builder = [[SCBasicMediaBuilder alloc]initWithSlideShow:self.slideShowComposition];
                 self.videoPreview = [[SCVideoPreview alloc]initWith:[builder buildMediaComposition] frame:CGRectMake(0, 0, 320, 320)];
