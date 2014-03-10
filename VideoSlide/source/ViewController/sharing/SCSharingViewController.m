@@ -14,6 +14,7 @@
 @property (nonatomic, strong) IBOutlet UIButton *backBtn;
 @property (nonatomic, strong) IBOutlet UIButton *fbBtn;
 @property (nonatomic, strong) IBOutlet UIButton *vineBtn;
+@property (nonatomic, strong) IBOutlet UIButton *cameraRollBtn;
 
 
 @property (nonatomic, strong) SCSlideShowComposition            *slideShowComposition;
@@ -23,6 +24,7 @@
 - (IBAction)onBackBtn:(id)sender;
 - (IBAction)onFbBtn:(id)sender;
 - (IBAction)onVineBtn:(id)sender;
+- (IBAction)onCameraRollBtn:(id)sender;
 
 @end
 
@@ -70,6 +72,12 @@
 {
     
 }
+
+- (IBAction)onCameraRollBtn:(id)sender
+{
+    
+}
+
 
 
 
