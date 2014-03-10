@@ -14,9 +14,11 @@
     Reachability* internetReach;
 }
 
+@property (nonatomic, strong) MBProgressHUD             *progressHUD;
 @property (nonatomic)         SCEnumScreen   lastScreen;
 @property (nonatomic)         SCEnumScreen   lastRelatedScreen;
 @property (nonatomic)         SCEnumScreen   screenNameType;
+
 @property (nonatomic, assign) BOOL            isActive;
 
 - (void)clearAll;
@@ -26,6 +28,9 @@
 - (void)goBack;
 - (void)dismissPresentScreen;
 - (void)dismissPresentScreenWithAnimated:(BOOL)animated completion:(void (^)(void))completionBlock;
+
+- (void)showProgressHUDWithType:(MBProgressHUDMode)type andMessage:(NSString*)message;
+- (void)hideProgressHUD;
 
 - (void)showLoading;
 - (void)showLoadingWithFrame:(CGRect)frame;

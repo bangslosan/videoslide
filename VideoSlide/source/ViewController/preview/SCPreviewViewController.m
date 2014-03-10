@@ -73,9 +73,9 @@
                 NSURL *outPut = [SCFileManager createURLFromTempWithName:[NSString stringWithFormat:@"%@.%@",SC_OUTPUT_VIDEO,SC_MP4]];
                 self.slideShowComposition.exportURL = outPut;
                 if(images.count > 1)
-                    [SCVideoUtil createVideoWithArrayImages:images size:SC_VIDEO_SIZE time:images.count/2 output:outPut];
+                    [SCVideoUtil createVideoWithArrayImages:images size:SC_VIDEO_SIZE time:CMTimeGetSeconds(self.slideShowComposition.totalDuration) output:outPut];
                 else
-                    [SCVideoUtil createVideoWith:[images objectAtIndex:0] size:SC_VIDEO_SIZE time:images.count output:outPut];
+                    [SCVideoUtil createVideoWith:[images objectAtIndex:0] size:SC_VIDEO_SIZE time:CMTimeGetSeconds(self.slideShowComposition.totalDuration) output:outPut];
                 
             }
             dispatch_async( dispatch_get_main_queue(), ^{

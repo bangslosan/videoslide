@@ -12,6 +12,9 @@
 
 @property (nonatomic, strong) IBOutlet UIButton *nextBtn;
 @property (nonatomic, strong) IBOutlet UIButton *backBtn;
+@property (nonatomic, strong) IBOutlet UILabel  *durationLb;
+
+
 @property (nonatomic, strong) SCSlideShowComposition *slideShowComposition;
 
 
@@ -37,7 +40,10 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
     self.slideShowComposition = [self.lastData objectForKey:SC_TRANSIT_KEY_SLIDE_SHOW_DATA];
+    
+    self.slideShowComposition.totalDuration = CMTimeMake(self.slideShowComposition.slides.count * SC_VIDEO_ADVANVCE_RENDER_FPS, SC_VIDEO_ADVANVCE_RENDER_FPS);
 
+    self.durationLb.text = [NSString stringWithFormat:@"Length: %d",(int)CMTimeGetSeconds(self.slideShowComposition.totalDuration)];
 }
 
 - (void)didReceiveMemoryWarning

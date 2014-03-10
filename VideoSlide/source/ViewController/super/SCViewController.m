@@ -8,7 +8,7 @@
 
 #import "SCViewController.h"
 
-@interface SCViewController ()
+@interface SCViewController () <MBProgressHUDDelegate>
 
 @property (nonatomic, strong) SCLoadingView      *loadingView;
 
@@ -102,6 +102,45 @@
 - (BOOL)prefersStatusBarHidden {
     return YES;
 }
+
+#pragma mark - progress HUD
+
+- (void)showProgressHUDWithType:(MBProgressHUDMode)type andMessage:(NSString*)message
+{
+    //Prepare Progress HUD
+    if(self.progressHUD.superview)
+    {
+        [self.progressHUD removeFromSuperview];
+        self.progressHUD.delegate = nil;
+        self.progressHUD = nil;
+    }
+    if(type == MBProgressHUDModeCustomView)
+    {
+        self.progressHUD.customView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:SC_PROGRESS_HUD_CHECKED]];
+        [self.progressHUD show:YES];
+        [self.progressHUD hide:YES afterDelay:0.5];
+    }
+    else
+    {
+        self.progressHUD = [[MBProgressHUD alloc] initWithView:self.view];
+        [self.progressHUD show:YES];
+    }
+    self.progressHUD.mode = type;
+    self.progressHUD.labelText = message;
+    self.progressHUD.progress = 0;
+    self.progressHUD.delegate = self;
+    [self.view addSubview:self.progressHUD];
+    
+    
+}
+
+- (void)hideProgressHUD
+{
+    //hide progress HUD
+    [self.progressHUD show:NO];
+    [self.progressHUD removeFromSuperview];
+}
+
 #pragma mark - class methods
 
 - (void)clearAll
@@ -198,6 +237,8 @@
 {
     return [SCScreenManager getInstance].currentPresentVC;
 }
+
+
 
 
 #pragma mark - class general methods
