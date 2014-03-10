@@ -548,7 +548,7 @@
 		5AF9A44618A6778300EB0A12 /* SCUploadObject.m in Sources */ = {isa = PBXBuildFile; fileRef = 5AF99CC118A6777A00EB0A12 /* SCUploadObject.m */; };
 		5AF9A44718A6778300EB0A12 /* SCVideoModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 5AF99CC318A6777A00EB0A12 /* SCVideoModel.m */; };
 		5AF9A44818A6778300EB0A12 /* SCVolumeRampModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 5AF99CC518A6777A00EB0A12 /* SCVolumeRampModel.m */; };
-		5AF9A44918A6778300EB0A12 /* SCAudioUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = 5AF99CC818A6777A00EB0A12 /* SCAudioUtil.m */; };
+		5AF9A44918A6778300EB0A12 /* SCAudioUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = 5AF99CC818A6777A00EB0A12 /* SCAudioUtil.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		5AF9A44A18A6778300EB0A12 /* SCImageUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = 5AF99CCA18A6777A00EB0A12 /* SCImageUtil.m */; };
 		5AF9A44B18A6778300EB0A12 /* SCJsonUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = 5AF99CCC18A6777A00EB0A12 /* SCJsonUtil.m */; };
 		5AF9A44C18A6778300EB0A12 /* SCTestUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = 5AF99CCE18A6777A00EB0A12 /* SCTestUtil.m */; };
@@ -4834,7 +4834,7 @@
 					"-all_load",
 				);
 				PRODUCT_NAME = VideoSlide;
-				PROVISIONING_PROFILE = "4336AB29-5928-4411-9EFE-7D2E6CA30F25";
+				PROVISIONING_PROFILE = "DC5109F2-971B-4589-8A9C-331A81700907";
 				TARGETED_DEVICE_FAMILY = 1;
 				WRAPPER_EXTENSION = app;
 			};
@@ -4858,7 +4858,7 @@
 					"-all_load",
 				);
 				PRODUCT_NAME = VideoSlide;
-				PROVISIONING_PROFILE = "4336AB29-5928-4411-9EFE-7D2E6CA30F25";
+				PROVISIONING_PROFILE = "DC5109F2-971B-4589-8A9C-331A81700907";
 				TARGETED_DEVICE_FAMILY = 1;
 				WRAPPER_EXTENSION = app;
 			};
