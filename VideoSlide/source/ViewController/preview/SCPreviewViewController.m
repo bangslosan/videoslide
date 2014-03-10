@@ -61,7 +61,7 @@
                     else
                     {
                         image = [SCImageUtil getSubImageFrom:slide.image rect:slide.rectCropped];
-                        //image = [SCImageUtil imageWithImage:image scaledToSize:CGSizeMake(640, 640)];
+                        image = [SCImageUtil imageWithImage:image scaledToSize:CGSizeMake(640, 640)];
                     }
 
                     [images addObject:image];

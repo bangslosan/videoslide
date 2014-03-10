@@ -12,6 +12,9 @@
 
 @property (nonatomic, strong) IBOutlet UIButton *nextBtn;
 @property (nonatomic, strong) IBOutlet UIButton *backBtn;
+@property (nonatomic, strong) SCSlideShowComposition *slideShowComposition;
+
+
 
 - (IBAction)onNextBtn:(id)sender;
 - (IBAction)onBackBtn:(id)sender;
@@ -33,6 +36,8 @@
 {
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
+    self.slideShowComposition = [self.lastData objectForKey:SC_TRANSIT_KEY_SLIDE_SHOW_DATA];
+
 }
 
 - (void)didReceiveMemoryWarning
@@ -45,7 +50,9 @@
 
 - (void)onNextBtn:(id)sender
 {
-    
+    if(self.slideShowComposition.slides.count > 0)
+        [self gotoScreen:SCEnumPreviewScreen data:[NSMutableDictionary dictionaryWithObjectsAndKeys:self.slideShowComposition, SC_TRANSIT_KEY_SLIDE_SHOW_DATA ,nil]];
+
 }
 
 - (void)onBackBtn:(id)sender

@@ -79,7 +79,7 @@
 - (IBAction)onNextBtn:(id)sender
 {
     if(self.slideShowComposition.slides.count > 0)
-        [self gotoScreen:SCEnumPreviewScreen data:[NSMutableDictionary dictionaryWithObjectsAndKeys:self.slideShowComposition, SC_TRANSIT_KEY_SLIDE_SHOW_DATA ,nil]];
+        [self gotoScreen:SCEnumVideoLengthSettingScreen data:[NSMutableDictionary dictionaryWithObjectsAndKeys:self.slideShowComposition, SC_TRANSIT_KEY_SLIDE_SHOW_DATA ,nil]];
 }
 
 #pragma mark - class methods
