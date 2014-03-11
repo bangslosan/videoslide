@@ -393,6 +393,11 @@ static SCScreenManager *instance;
             viewController = [[SCVideoLengthSettingViewController alloc]initWithNibName:@"SCVideoLengthSettingViewController" bundle:nil];
         }
             break;
+        case SCEnumMusicEditScreen:
+        {
+            viewController = [[SCMusicEditViewController alloc]initWithNibName:@"SCMusicEditViewController" bundle:nil];
+        }
+            break;
         case SCEnumSharingScreen:
         {
             viewController = [[SCSharingViewController alloc]initWithNibName:@"SCSharingViewController" bundle:nil];

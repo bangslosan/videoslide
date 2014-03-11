@@ -210,7 +210,8 @@ typedef enum {
     SCEnumVineAuthenticateScreen,
     SCEnumPreviewScreen,
     SCEnumVideoLengthSettingScreen,
-    SCEnumSharingScreen
+    SCEnumSharingScreen,
+    SCEnumMusicEditScreen,
 } SCEnumScreen;
 
 

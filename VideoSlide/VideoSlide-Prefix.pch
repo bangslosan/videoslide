@@ -126,6 +126,7 @@
 #import "SCPreviewViewController.h"
 #import "SCVideoLengthSettingViewController.h"
 #import "SCSharingViewController.h"
+#import "SCMusicEditViewController.h"
 
 //import all composition
 #import "SCComposition.h"
@@ -157,6 +158,8 @@
 #import "SCImageUtil.h"
 #import "SCTextUtil.h"
 #import "SCUploadUtil.h"
+#import "SCAudioUtil.h"
+#import "SCHelper.h"
 
 //import all social network headers
 //#import "Instagram.h"

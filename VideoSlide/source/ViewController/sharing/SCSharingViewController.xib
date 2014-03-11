@@ -7,6 +7,7 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="SCSharingViewController">
             <connections>
                 <outlet property="backBtn" destination="6CB-9A-Z6l" id="0f9-4t-OYE"/>
+                <outlet property="cameraRollBtn" destination="ehk-4S-TQR" id="9N3-hD-QKP"/>
                 <outlet property="fbBtn" destination="yEZ-ai-Gac" id="184-Ot-B5G"/>
                 <outlet property="view" destination="1" id="3"/>
                 <outlet property="vineBtn" destination="Xqj-QZ-NTY" id="wWs-Zw-lCx"/>
@@ -21,7 +22,7 @@
                     <rect key="frame" x="0.0" y="428" width="320" height="52"/>
                     <autoresizingMask key="autoresizingMask" flexibleMinY="YES"/>
                     <color key="backgroundColor" red="0.38431376220000002" green="0.90980398650000005" blue="0.45098042490000001" alpha="1" colorSpace="deviceRGB"/>
-                    <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                    <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
                     <state key="normal" title="Preview">
                         <color key="titleColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                         <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
@@ -31,28 +32,39 @@
                     </connections>
                 </button>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="yEZ-ai-Gac">
-                    <rect key="frame" x="110" y="34" width="100" height="100"/>
+                    <rect key="frame" x="41" y="71" width="110" height="110"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                    <color key="backgroundColor" red="1" green="0.20941744400000001" blue="0.33014532299999999" alpha="1" colorSpace="calibratedRGB"/>
+                    <color key="backgroundColor" red="0.2078431547" green="0.61176472900000001" blue="0.82745105029999999" alpha="1" colorSpace="deviceRGB"/>
+                    <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
                     <state key="normal" title="Facebook">
-                        <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
-                        <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </state>
                     <connections>
                         <action selector="onFbBtn:" destination="-1" eventType="touchUpInside" id="lEn-fl-1Fb"/>
                     </connections>
                 </button>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="Xqj-QZ-NTY">
-                    <rect key="frame" x="110" y="170" width="100" height="100"/>
+                    <rect key="frame" x="163" y="71" width="110" height="110"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <color key="backgroundColor" red="0.21960784310000001" green="0.58823529409999997" blue="0.2274509804" alpha="1" colorSpace="deviceRGB"/>
-                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                    <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
                     <state key="normal" title="Vine">
-                        <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
-                        <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </state>
                     <connections>
                         <action selector="onVineBtn:" destination="-1" eventType="touchUpInside" id="IeC-g5-qVC"/>
+                    </connections>
+                </button>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="ehk-4S-TQR">
+                    <rect key="frame" x="41" y="193" width="232" height="80"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <color key="backgroundColor" red="1" green="0.20941744400000001" blue="0.33014532299999999" alpha="1" colorSpace="calibratedRGB"/>
+                    <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
+                    <state key="normal" title="Camera Roll">
+                        <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </state>
+                    <connections>
+                        <action selector="onCameraRollBtn:" destination="-1" eventType="touchUpInside" id="2ZQ-4V-dom"/>
                     </connections>
                 </button>
             </subviews>
