@@ -10,7 +10,6 @@
 #import "SCHelper.h"
 
 @interface SCMusicEditViewController ()  <UIScrollViewDelegate, AVAudioPlayerDelegate,MPMediaPickerControllerDelegate>
-
 @property (nonatomic, strong) IBOutlet UIButton *musicBtn;
 @property (nonatomic, strong) IBOutlet UIButton *nextBtn;
 @property (nonatomic, strong) IBOutlet UIButton *backBtn;
@@ -63,7 +62,6 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
     self.slideShowComposition = [self.lastData objectForKey:SC_TRANSIT_KEY_SLIDE_SHOW_DATA];
-    
     //init song picker
     self.picker = [[MPMediaPickerController alloc] initWithMediaTypes: MPMediaTypeMusic];
     self.picker.delegate						= self;
@@ -127,7 +125,6 @@
 
 - (void)onNextBtn:(id)sender
 {
-    
     if(self.musicComposition)
     {
         self.musicComposition.timeRange = CMTimeRangeMake(CMTimeMake([self currentTime] * SC_VIDEO_OUTPUT_FPS, SC_VIDEO_OUTPUT_FPS), self.slideShowComposition.totalDuration);
@@ -418,7 +415,6 @@
     
     return result;
 }
-
 
 
 

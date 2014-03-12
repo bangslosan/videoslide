@@ -842,8 +842,8 @@
 		5AF9A70D18A6778500EB0A12 /* SCSheetMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5AF9A28918A6778300EB0A12 /* SCSheetMenu.xib */; };
 		5AF9A70E18A6778500EB0A12 /* SCVideoDebugViewer.m in Sources */ = {isa = PBXBuildFile; fileRef = 5AF9A28B18A6778300EB0A12 /* SCVideoDebugViewer.m */; };
 		5AF9A70F18A6778500EB0A12 /* SCView.m in Sources */ = {isa = PBXBuildFile; fileRef = 5AF9A28D18A6778300EB0A12 /* SCView.m */; };
+		8C1F6AAB18CEE093007317E1 /* SCMusicEditViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8C1F6AAA18CEE093007317E1 /* SCMusicEditViewController.xib */; };
 		8C9143B218CCDA6800592F0F /* SCMusicEditViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8C9143B018CCDA6800592F0F /* SCMusicEditViewController.m */; };
-		8C9143B318CCDA6800592F0F /* SCMusicEditViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8C9143B118CCDA6800592F0F /* SCMusicEditViewController.xib */; };
 		915EE14018065FD600183509 /* ImageIO.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 915EE13F18065FD600183509 /* ImageIO.framework */; };
 		918724EC181A5257001AEE03 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 918724EB181A5257001AEE03 /* CoreLocation.framework */; };
 		918724EE181A525D001AEE03 /* CoreMotion.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 918724ED181A525D001AEE03 /* CoreMotion.framework */; };
@@ -2014,9 +2014,9 @@
 		5AF9A28B18A6778300EB0A12 /* SCVideoDebugViewer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SCVideoDebugViewer.m; sourceTree = "<group>"; };
 		5AF9A28C18A6778300EB0A12 /* SCView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SCView.h; sourceTree = "<group>"; };
 		5AF9A28D18A6778300EB0A12 /* SCView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SCView.m; sourceTree = "<group>"; };
+		8C1F6AAA18CEE093007317E1 /* SCMusicEditViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SCMusicEditViewController.xib; sourceTree = "<group>"; };
 		8C9143AF18CCDA6800592F0F /* SCMusicEditViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SCMusicEditViewController.h; sourceTree = "<group>"; };
 		8C9143B018CCDA6800592F0F /* SCMusicEditViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SCMusicEditViewController.m; sourceTree = "<group>"; };
-		8C9143B118CCDA6800592F0F /* SCMusicEditViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SCMusicEditViewController.xib; sourceTree = "<group>"; };
 		912DD721181A7C2200915B4B /* libGTLTouchStaticLib.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libGTLTouchStaticLib.a; path = "../../../../Desktop/googlesdk/google-api-objectivec-client-read-only/Source/build/Debug-iphoneos/libGTLTouchStaticLib.a"; sourceTree = "<group>"; };
 		915337A3181A0E2700C4B77A /* FacebookSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FacebookSDK.framework; path = SlideshowCreator/source/Vendor/FacebookSDK/FacebookSDK.framework; sourceTree = "<group>"; };
 		915EE13F18065FD600183509 /* ImageIO.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ImageIO.framework; path = System/Library/Frameworks/ImageIO.framework; sourceTree = SDKROOT; };
@@ -2223,7 +2223,7 @@
 				5A44BDC718BDAAA800CA10FB /* SCVideoLengthSettingViewController.xib */,
 				8C9143AF18CCDA6800592F0F /* SCMusicEditViewController.h */,
 				8C9143B018CCDA6800592F0F /* SCMusicEditViewController.m */,
-				8C9143B118CCDA6800592F0F /* SCMusicEditViewController.xib */,
+				8C1F6AAA18CEE093007317E1 /* SCMusicEditViewController.xib */,
 				5AC9812318B4BD85002B9AC3 /* SCPreviewViewController.h */,
 				5AC9812418B4BD85002B9AC3 /* SCPreviewViewController.m */,
 				5AC9812518B4BD85002B9AC3 /* SCPreviewViewController.xib */,
@@ -4371,7 +4371,7 @@
 				5AC60B2F18A8D131009B5485 /* icon-camera.png in Resources */,
 				5AF9A2AA18A6778300EB0A12 /* btn_transition_disolve@2x.png in Resources */,
 				5AF9A33018A6778300EB0A12 /* icon_mainview_add_music@2x.png in Resources */,
-				8C9143B318CCDA6800592F0F /* SCMusicEditViewController.xib in Resources */,
+				8C1F6AAB18CEE093007317E1 /* SCMusicEditViewController.xib in Resources */,
 				5AF9A3F318A6778300EB0A12 /* bg_textview_right_column@2x.png in Resources */,
 				5AF9A2B218A6778300EB0A12 /* btn_transition_from_left@2x.png in Resources */,
 				5AF9A6F318A6778500EB0A12 /* SCPhotoItemView.xib in Resources */,
