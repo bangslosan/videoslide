@@ -62,7 +62,6 @@
 //import all manager
 #import "SCBaseManager.h"
 #import "SCScreenManager.h"
-#import "SCVideoCreatorManager.h"
 #import "SCFileManager.h"
 #import "SCSettingManager.h"
 #import "SCSlideShowSettingManager.h"

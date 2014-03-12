@@ -7,6 +7,7 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "SCComposition.h"
 
 @interface SCTransitionComposition : SCComposition
 

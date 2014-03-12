@@ -9,7 +9,7 @@
 #import "SCBaseManager.h"
 
 @class SCTextObjectView;
-
+@class SCSlideShowComposition;
 @interface SCSlideShowSettingManager : SCBaseManager
 
 @property (nonatomic, retain) SCSlideShowComposition   *slideShowComposition;

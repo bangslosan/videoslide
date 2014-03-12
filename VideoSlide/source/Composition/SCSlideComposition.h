@@ -8,15 +8,12 @@
 
 #import <Foundation/Foundation.h>
 #import "SCTransitionComposition.h"
+#import "SCMediaComposition.h"
 
-@class SCMediaComposition;
 @class SCVideoComposition;
 @class SCFilterComposition;
 
 typedef void (^success)(SCVideoComposition*);
-
-
-@class SCVideoComposition;
 
 @interface SCSlideComposition : SCMediaComposition;
 

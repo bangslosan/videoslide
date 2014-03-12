@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		5A0145DF18D0427D00C38A18 /* SCVineUserModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 5A0145DE18D0427D00C38A18 /* SCVineUserModel.m */; };
 		5A23015317F56EA600A06501 /* CoreText.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5A23015217F56EA600A06501 /* CoreText.framework */; };
 		5A44BDC818BDAAA800CA10FB /* SCVideoLengthSettingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5A44BDC618BDAAA800CA10FB /* SCVideoLengthSettingViewController.m */; };
 		5A44BDC918BDAAA800CA10FB /* SCVideoLengthSettingViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5A44BDC718BDAAA800CA10FB /* SCVideoLengthSettingViewController.xib */; };
@@ -533,7 +534,6 @@
 		5AF9A43518A6778300EB0A12 /* SCSettingManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 5AF99C9E18A6777A00EB0A12 /* SCSettingManager.m */; };
 		5AF9A43618A6778300EB0A12 /* SCSlideShowSettingManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 5AF99CA018A6777A00EB0A12 /* SCSlideShowSettingManager.m */; };
 		5AF9A43718A6778300EB0A12 /* SCSocialManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 5AF99CA218A6777A00EB0A12 /* SCSocialManager.m */; };
-		5AF9A43918A6778300EB0A12 /* SCVideoCreatorManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 5AF99CA618A6777A00EB0A12 /* SCVideoCreatorManager.m */; };
 		5AF9A43A18A6778300EB0A12 /* SCVineManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 5AF99CA818A6777A00EB0A12 /* SCVineManager.m */; };
 		5AF9A43C18A6778300EB0A12 /* SCAudioModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 5AF99CAD18A6777A00EB0A12 /* SCAudioModel.m */; };
 		5AF9A43D18A6778300EB0A12 /* SCCompositionModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 5AF99CAF18A6777A00EB0A12 /* SCCompositionModel.m */; };
@@ -862,6 +862,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		5A0145DD18D0427D00C38A18 /* SCVineUserModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SCVineUserModel.h; sourceTree = "<group>"; };
+		5A0145DE18D0427D00C38A18 /* SCVineUserModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SCVineUserModel.m; sourceTree = "<group>"; };
 		5A23015217F56EA600A06501 /* CoreText.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreText.framework; path = System/Library/Frameworks/CoreText.framework; sourceTree = SDKROOT; };
 		5A44BDC518BDAAA800CA10FB /* SCVideoLengthSettingViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SCVideoLengthSettingViewController.h; sourceTree = "<group>"; };
 		5A44BDC618BDAAA800CA10FB /* SCVideoLengthSettingViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SCVideoLengthSettingViewController.m; sourceTree = "<group>"; };
@@ -1439,8 +1441,6 @@
 		5AF99CA018A6777A00EB0A12 /* SCSlideShowSettingManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SCSlideShowSettingManager.m; sourceTree = "<group>"; };
 		5AF99CA118A6777A00EB0A12 /* SCSocialManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SCSocialManager.h; sourceTree = "<group>"; };
 		5AF99CA218A6777A00EB0A12 /* SCSocialManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SCSocialManager.m; sourceTree = "<group>"; };
-		5AF99CA518A6777A00EB0A12 /* SCVideoCreatorManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SCVideoCreatorManager.h; sourceTree = "<group>"; };
-		5AF99CA618A6777A00EB0A12 /* SCVideoCreatorManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SCVideoCreatorManager.m; sourceTree = "<group>"; };
 		5AF99CA718A6777A00EB0A12 /* SCVineManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SCVineManager.h; sourceTree = "<group>"; };
 		5AF99CA818A6777A00EB0A12 /* SCVineManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SCVineManager.m; sourceTree = "<group>"; };
 		5AF99CAC18A6777A00EB0A12 /* SCAudioModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SCAudioModel.h; sourceTree = "<group>"; };
@@ -2914,8 +2914,6 @@
 				5AF99CA018A6777A00EB0A12 /* SCSlideShowSettingManager.m */,
 				5AF99CA118A6777A00EB0A12 /* SCSocialManager.h */,
 				5AF99CA218A6777A00EB0A12 /* SCSocialManager.m */,
-				5AF99CA518A6777A00EB0A12 /* SCVideoCreatorManager.h */,
-				5AF99CA618A6777A00EB0A12 /* SCVideoCreatorManager.m */,
 				5AF99CA718A6777A00EB0A12 /* SCVineManager.h */,
 				5AF99CA818A6777A00EB0A12 /* SCVineManager.m */,
 			);
@@ -2951,6 +2949,8 @@
 				5AF99CC318A6777A00EB0A12 /* SCVideoModel.m */,
 				5AF99CC418A6777A00EB0A12 /* SCVolumeRampModel.h */,
 				5AF99CC518A6777A00EB0A12 /* SCVolumeRampModel.m */,
+				5A0145DD18D0427D00C38A18 /* SCVineUserModel.h */,
+				5A0145DE18D0427D00C38A18 /* SCVineUserModel.m */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -4547,7 +4547,6 @@
 				5AF9A60118A6778400EB0A12 /* GPUImageEmbossFilter.m in Sources */,
 				5AF9A29718A6778300EB0A12 /* main.m in Sources */,
 				5ABD514F18AE268E00936668 /* SCPreviewFlow.m in Sources */,
-				5AF9A43918A6778300EB0A12 /* SCVideoCreatorManager.m in Sources */,
 				5AF9A6C618A6778500EB0A12 /* SCSlideShowPreview.m in Sources */,
 				5AF9A44918A6778300EB0A12 /* SCAudioUtil.m in Sources */,
 				5AF9A6A818A6778500EB0A12 /* SDImageCache.m in Sources */,
@@ -4726,6 +4725,7 @@
 				5AF9A44818A6778300EB0A12 /* SCVolumeRampModel.m in Sources */,
 				5AF9A6F218A6778500EB0A12 /* SCPhotoItemView.m in Sources */,
 				5AF9A62918A6778400EB0A12 /* GPUImageLuminanceThresholdFilter.m in Sources */,
+				5A0145DF18D0427D00C38A18 /* SCVineUserModel.m in Sources */,
 				5AF9A6A918A6778500EB0A12 /* UIButton+WebCache.m in Sources */,
 				5AF9A62C18A6778400EB0A12 /* GPUImageMaskFilter.m in Sources */,
 				5AF9A61918A6778400EB0A12 /* GPUImageHoughTransformLineDetector.m in Sources */,

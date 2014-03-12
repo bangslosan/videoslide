@@ -8,12 +8,6 @@
 
 #import <Foundation/Foundation.h>
 
-@class GTMOAuth2ViewControllerTouch;
-@class GTLYouTube;
-@class GTLUtilities;
-@class GTMHTTPUploadFetcher;
-@class GTMHTTPFetcherLogging;
-@class GTLServiceTicket;
 
 @protocol SCUploadObjectDelegate <NSObject>
 @optional
@@ -34,7 +28,6 @@
 @property (nonatomic,strong) NSDate             *uploadDate;
 
 // upload process
-@property (nonatomic,strong) GTLServiceTicket             *_uploadFileTicket;
 @property (nonatomic,strong) NSURL                        *_uploadLocationURL;  // URL for restarting an upload.
 
 // connection rate for fb
@@ -48,12 +41,11 @@
 @property (nonatomic,strong) NSString           *vineUploadThumbnailURL; // upload thumbnail success => return http path
 
 @property (nonatomic,strong) UIImage            *vineThumbnailImage;
-
 @property (nonatomic,strong) NSURL              *vineOutputURL;
 
 - (id)init;
 - (void)upload; // youtube
 - (void)facebookUpload;
-- (void)vineUpload;
+- (void)sartUploadCurrentVideo;
 
 @end

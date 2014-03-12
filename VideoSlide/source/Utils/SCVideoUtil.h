@@ -69,5 +69,11 @@
 + (void)resizeVideoWith:(NSURL*)source des:(NSURL*)des;
 
 
+/*
+ *Convert a video to vine mode
+ */
+
++ (void)convertVideoFrom:(NSURL*)fromURL to:(NSURL*)toURL;
+
 
 @end

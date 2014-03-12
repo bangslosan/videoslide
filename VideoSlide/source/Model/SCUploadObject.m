@@ -22,7 +22,6 @@
 @synthesize videoURL;
 @synthesize uploadDate;
 
-@synthesize _uploadFileTicket;
 @synthesize _uploadLocationURL;
 @synthesize connectionRateTimer;
 
@@ -67,48 +66,12 @@
 }
 
 #pragma mark - UPLOAD
-#pragma mark - Upload videos to Youtube
-
-- (void)youtubeUploadVideo {
-    
-}
-
 
 - (void)upload {
     
     // init status
     self.uploadStatus = SCUploadStatusUploading;
     [self.delegate onUpdateUploadStatus:SCUploadStatusUploading];
-    
-    // Collect the metadata for the upload from the user interface.
-    
-    // Status.
-   /* GTLYouTubeVideoStatus *status = [GTLYouTubeVideoStatus object];
-    //    status.privacyStatus = [_uploadPrivacyPopup titleOfSelectedItem];
-    
-    // Snippet.
-    GTLYouTubeVideoSnippet *snippet = [GTLYouTubeVideoSnippet object];
-    snippet.title = self.fileName;
-    NSString *desc = @"Video Description";
-    if ([desc length] > 0) {
-        snippet.descriptionProperty = desc;
-    }
-    
-    NSString *tagsStr = @"videorize,video,slideshow";
-    if ([tagsStr length] > 0) {
-        snippet.tags = [tagsStr componentsSeparatedByString:@","];
-    }
-    //    if ([_uploadCategoryPopup isEnabled]) {
-    //        NSMenuItem *selectedCategory = [_uploadCategoryPopup selectedItem];
-    //        snippet.categoryId = [selectedCategory representedObject];
-    //    }
-    
-    GTLYouTubeVideo *video = [GTLYouTubeVideo object];
-    video.status = status;
-    video.snippet = snippet;
-    
-    [self uploadVideoWithVideoObject:video
-             resumeUploadLocationURL:nil];*/
 }
 
 
@@ -117,134 +80,8 @@
     // Restart a stopped upload, using the location URL from the previous
     // upload attempt
     if (_uploadLocationURL == nil) return;
-    
-    // Since we are restarting an upload, we do not need to add metadata to the
-    // video object.
-  /*  GTLYouTubeVideo *video = [GTLYouTubeVideo object];
-    
-    @try {
-        [self uploadVideoWithVideoObject:video
-                 resumeUploadLocationURL:_uploadLocationURL];
-    }
-    @catch (NSException *exception) {
-        [Crittercism logHandledException:exception];
-        self.uploadStatus = SCUploadStatusFailed;
-        [self.delegate onUpdateUploadStatus:SCUploadStatusFailed];
-    }
-    @finally {
-        
-    }*/
-    
 }
 
-/*- (void)uploadVideoWithVideoObject:(GTLYouTubeVideo *)video
-           resumeUploadLocationURL:(NSURL *)locationURL {
-    
-    // Get a file handle for the upload data.
-    NSString *path = self.videoURL.path;  //[SCFileManager URLFromBundleWithName:@"Project Title.mov"].path;
-    NSString *filename = [path lastPathComponent];
-    NSFileHandle *fileHandle = [NSFileHandle fileHandleForReadingAtPath:path];
-    if (fileHandle) {
-        
-        NSString *mimeType = [self MIMETypeForFilename:filename
-                                       defaultMIMEType:@"video/quicktime"];
-        GTLUploadParameters *uploadParameters =
-        [GTLUploadParameters uploadParametersWithFileHandle:fileHandle
-                                                   MIMEType:mimeType];
-        
-        uploadParameters.uploadLocationURL = locationURL;
-        
-        GTLQueryYouTube *query = [GTLQueryYouTube queryForVideosInsertWithObject:video
-                                                                            part:@"snippet,status"
-                                                                uploadParameters:uploadParameters];
-        
-        GTLServiceYouTube *service = [SCSocialManager getInstance].youtubeManager.youTubeService;
-        _uploadFileTicket = [service executeQuery:query
-                                completionHandler:^(GTLServiceTicket *ticket,
-                                                    GTLYouTubeVideo *uploadedVideo,
-                                                    NSError *error) {
-                                    @try {
-                                        // Callback
-                                        _uploadFileTicket = nil;
-                                        if (error == nil) {
-                                            
-                                            NSLog(@"OK 1");
-                                            self.uploadStatus = SCUploadStatusUploaded;
-                                            self.uploadProgress = 100;
-                                            [self.delegate onUpdateUploadStatus:SCUploadStatusUploaded];
-                                        } else {
-                                            
-                                            NSLog(@"Error 1");
-                                            self.uploadStatus = SCUploadStatusFailed;
-                                            [self.delegate onUpdateUploadStatus:SCUploadStatusFailed];
-                                        }
-                                        
-                                        _uploadLocationURL = nil;
-                                    }
-                                    @catch (NSException *exception) {
-                                        NSLog(@"CATCHED 2: Assertion failure in -[GTMHTTPUploadFetcher connectionDidFinishLoading:], GTMHTTPUploadFetcher.m:399");
-                                    }
-                                    @finally {
-                                        
-                                    }
-                                    
-                                    
-                                }];
-        
-         __weak typeof(self) weakSelf = self;
-        _uploadFileTicket.uploadProgressBlock = ^(GTLServiceTicket *ticket,
-                                                  unsigned long long numberOfBytesRead,
-                                                  unsigned long long dataLength) {
-            @try {
-                double progressPercent = ((double)numberOfBytesRead / (double)dataLength) * 100;
-                NSLog(@"%f %%", progressPercent);
-                weakSelf.uploadProgress = progressPercent;
-                [weakSelf.delegate onUpdateUploadProgress:weakSelf.uploadProgress];
-                
-                if (progressPercent >= 100) {
-                    weakSelf.uploadStatus = SCUploadStatusUploaded;
-                    weakSelf.uploadProgress = 100;
-                    [weakSelf.delegate onUpdateUploadStatus:SCUploadStatusUploaded];
-                }
-            }
-            @catch (NSException *exception) {
-                NSLog(@"CATCHED 1: Assertion failure in -[GTMHTTPUploadFetcher connectionDidFinishLoading:], GTMHTTPUploadFetcher.m:399");
-            }
-            @finally {
-                
-            }
-            
-            
-        };
-        
-        // To allow restarting after stopping, we need to track the upload location
-        // URL.
-        //
-        // For compatibility with systems that do not support Objective-C blocks
-        // (iOS 3 and Mac OS X 10.5), the location URL may also be obtained in the
-        // progress callback as ((GTMHTTPUploadFetcher *)[ticket objectFetcher]).locationURL
-        
-        GTMHTTPUploadFetcher *uploadFetcher = (GTMHTTPUploadFetcher *)[_uploadFileTicket objectFetcher];
-        uploadFetcher.locationChangeBlock = ^(NSURL *url) {
-            @try {
-                _uploadLocationURL = url;
-            }
-            @catch (NSException *exception) {
-                NSLog(@"CATCHED 3: Assertion failure in -[GTMHTTPUploadFetcher connectionDidFinishLoading:], GTMHTTPUploadFetcher.m:399");
-            }
-            @finally {
-                
-            }
-            
-        };
-        
-    } else {
-        // Could not read file data.
-        NSLog(@"File Not Found %@", path);
-        self.uploadStatus = SCUploadStatusFailed;
-    }
-}
-*/
 - (NSString *)MIMETypeForFilename:(NSString *)filename
                   defaultMIMEType:(NSString *)defaultType {
     NSString *result = defaultType;
@@ -259,47 +96,6 @@
         CFRelease(uti);
     }
     return result;
-}
-
-#pragma mark - Facebook Upload
-- (void)facebookUpload {
-    
-   /* // init status
-    self.uploadStatus = SCUploadStatusUploading;
-    [self.delegate onUpdateUploadStatus:SCUploadStatusUploading];
-    
-    NSData *videoData = [NSData dataWithContentsOfURL:videoURL];
-    NSString *fbFilename = [videoURL.path lastPathComponent];
-    
-    self.currentTotalBytes = [videoData length];
-    float needTime = self.currentTotalBytes / (SC_CONNECTION_RATE * 1024);
-    float fTimeRate = needTime/0.1;
-    float percent95ProgressBar = SC_UPLOAD_BAR_PROGRESS_WIDTH / 100 * 95;
-    self.fSegmentProgress = percent95ProgressBar / fTimeRate;
-    
-    NSDictionary *parameters = [NSDictionary dictionaryWithObject:videoData forKey:fbFilename];
-    FBRequest *request = [FBRequest requestWithGraphPath:@"me/videos" parameters:parameters HTTPMethod:@"POST"];
-
-    //[SVProgressHUD showWithStatus:@"uploading..."];
-    
-    [self startConnectionRateWithBytes];
-    
-    [request startWithCompletionHandler:^(FBRequestConnection *connection, id result, NSError *error) {
-      //  [SVProgressHUD dismiss];
-        NSLog(@"result: %@, error: %@", result, error);
-        
-        [self endConnectionRate];
-
-        if (error == nil) {
-            self.uploadStatus = SCUploadStatusUploaded;
-            [self.delegate onUpdateUploadProgressWithSegment:SC_UPLOAD_BAR_PROGRESS_WIDTH];
-            [self.delegate onUpdateUploadStatus:SCUploadStatusUploaded];
-        } else {
-            self.uploadStatus = SCUploadStatusFailed;
-            [self.delegate onUpdateUploadStatus:SCUploadStatusFailed];
-        }
-        
-    }];*/
 }
 
 #pragma mark - Connection Rate Timer
@@ -330,21 +126,24 @@
 }
 
 #pragma mark - Vine Upload
-- (void)vineUpload {
-    
+- (void)sartUploadCurrentVideo
+{
     // init status
     self.uploadStatus = SCUploadStatusUploading;
     [self.delegate onUpdateUploadStatus:SCUploadStatusUploading];
     self.vineOutputURL = self.videoURL;
-    if ([SCFileManager exist:self.videoURL] && self.vineOutputURL) {
-        [self convertVideoToVine];
+    if ([SCFileManager exist:self.videoURL] && self.vineOutputURL)
+    {
+        self.vineThumbnailImage = [[self imageThumbnailFromURL:self.vineOutputURL] imageByScalingAndCroppingForSize:CGSizeMake(480, 480)];
+        //self.vineOutputURL = toURL;
+        [self UploadVideoToServer];
     }
 
 }
 
 #pragma mark - Create a Post
 
-- (void)uploadToVine {
+- (void)uploadPostToVine {
     
     AFHTTPClient *httpClient = [[AFHTTPClient alloc] initWithBaseURL:[NSURL URLWithString:@"https://api.vineapp.com/posts"]];
     [httpClient setParameterEncoding:AFFormURLParameterEncoding];
@@ -404,159 +203,9 @@
                                          }];
     
     [httpClient enqueueHTTPRequestOperation:operation];
-    
-    
-    /*
-    AFHTTPClient *httpClient = [[AFHTTPClient alloc] initWithBaseURL:[NSURL URLWithString:@"https://api.vineapp.com/"]];
-    NSMutableURLRequest *request = [httpClient requestWithMethod:@"GET"
-                                                            path:validateString
-                                                      parameters:nil];
-    AFHTTPRequestOperation *operation = [[AFHTTPRequestOperation alloc] initWithRequest:request];
-    [httpClient registerHTTPOperationClass:[AFHTTPRequestOperation class]];
-    [operation setCompletionBlockWithSuccess:^(AFHTTPRequestOperation *operation, id responseObject) {
-        // Print the response body in text
-        NSLog(@"Response: %@", [[NSString alloc] initWithData:responseObject encoding:NSUTF8StringEncoding]);
-    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
-        NSLog(@"Error: %@", error);
-    }];
-    [operation start];
-     */
 }
 
-- (void)convertVideoToVine {
-    
-    /*NSError *error = nil;
-    
-    AVAssetWriter *videoWriter = [[AVAssetWriter alloc] initWithURL:self.vineOutputURL fileType:AVFileTypeMPEG4 error:&error];
-    NSParameterAssert(videoWriter);
-    
-    NSDictionary *videoSettings = [NSDictionary dictionaryWithObjectsAndKeys:
-                                   AVVideoCodecH264, AVVideoCodecKey,
-                                   [NSNumber numberWithInt:480], AVVideoWidthKey,
-                                   [NSNumber numberWithInt:480], AVVideoHeightKey,
-                                   //codecSettings, AVVideoCompressionPropertiesKey,
-                                   AVVideoScalingModeResizeAspectFill
-                                   ,AVVideoScalingModeKey, nil];
-    
-    AVAssetWriterInput* videoWriterInput = [AVAssetWriterInput
-                                            assetWriterInputWithMediaType:AVMediaTypeVideo
-                                            outputSettings:videoSettings];
-    
-    NSParameterAssert(videoWriterInput);
-    NSParameterAssert([videoWriter canAddInput:videoWriterInput]);
-    
-    
-    
-    videoWriterInput.expectsMediaDataInRealTime = YES;
-    
-    [videoWriter addInput:videoWriterInput];
-    
-    AVAsset *avAsset = [[AVURLAsset alloc] initWithURL:self.videoURL options:nil];
-    NSError *aerror = nil;
-    AVAssetReader *reader = [[AVAssetReader alloc] initWithAsset:avAsset error:&aerror];
-    
-    AVAssetTrack *videoTrack = [[avAsset tracksWithMediaType:AVMediaTypeVideo]objectAtIndex:0];
-    
-    videoWriterInput.transform = videoTrack.preferredTransform;
-    
-    NSDictionary *videoOptions = [NSDictionary dictionaryWithObjectsAndKeys: [NSNumber numberWithInt:kCVPixelFormatType_420YpCbCr8BiPlanarVideoRange], kCVPixelBufferPixelFormatTypeKey,
-                                  [NSNumber numberWithInt:480], kCVPixelBufferWidthKey,
-                                  [NSNumber numberWithInt:480], kCVPixelBufferHeightKey,
-                                  nil];
-    
-    AVAssetReaderTrackOutput *asset_reader_output = [[AVAssetReaderTrackOutput alloc] initWithTrack:videoTrack outputSettings:videoOptions];
-    
-    [reader addOutput:asset_reader_output];
-    // audio setup
-    AVAssetWriterInput *audioWriterInput;
-    AVAssetReader *audioReader;
-    AVAssetTrack *audioTrack;
-    AVAssetReaderOutput *audioReaderOutput;
-    /*if ([[avAsset tracksWithMediaType:AVMediaTypeAudio] count] > 0) {
-        audioWriterInput = [AVAssetWriterInput assetWriterInputWithMediaType:AVMediaTypeAudio outputSettings:nil];
-        audioReader = [AVAssetReader assetReaderWithAsset:avAsset error:nil];
-        audioTrack = [[avAsset tracksWithMediaType:AVMediaTypeAudio] objectAtIndex:0];
-        audioReaderOutput = [AVAssetReaderTrackOutput assetReaderTrackOutputWithTrack:audioTrack outputSettings:nil];
-        [audioReader addOutput:audioReaderOutput];
-        
-        [videoWriter addInput:audioWriterInput];
-    }*/
-    
-   /* dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_BACKGROUND, 0), ^(void) {
-        
-        [videoWriter startWriting];
-        [videoWriter startSessionAtSourceTime:kCMTimeZero];
-        [reader startReading];
-        
-        CMSampleBufferRef buffer;
-        
-        
-        while ([reader status]==AVAssetReaderStatusReading)
-        {
-            if(![videoWriterInput isReadyForMoreMediaData])
-                continue;
-            
-            buffer = [asset_reader_output copyNextSampleBuffer];
-            
-            NSLog(@"READING");
-            
-            if(buffer){
-                [videoWriterInput appendSampleBuffer:buffer];
-                CFRelease(buffer);
-            }
-            
-            NSLog(@"WRITTING...");
-            
-            
-        }
-        
-        //Finish the session:
-        [videoWriterInput markAsFinished];
-        
-        if (audioWriterInput) {
-            [videoWriter startSessionAtSourceTime:kCMTimeZero];
-            [audioReader startReading];
-            
-            while (audioWriterInput.readyForMoreMediaData) {
-                CMSampleBufferRef audioSampleBuffer;
-                if ([audioReader status] == AVAssetReaderStatusReading &&
-                    (audioSampleBuffer = [audioReaderOutput copyNextSampleBuffer])) {
-                    if (audioSampleBuffer) {
-                        printf("write audio  ");
-                        [audioWriterInput appendSampleBuffer:audioSampleBuffer];
-                    }
-                    CFRelease(audioSampleBuffer);
-                } else {
-                    [audioWriterInput markAsFinished];
-                    switch ([audioReader status]) {
-                        case AVAssetReaderStatusCompleted:
-                        {
-                            
-                        }
-                    }
-                }
-            }
-        }
-        dispatch_sync(dispatch_get_main_queue(), ^(void) {
-            [videoWriter endSessionAtSourceTime:avAsset.duration];
-            [videoWriter finishWritingWithCompletionHandler:^{
-            }];
-            
-            self.vineThumbnailImage = [[self imageThumbnailFromURL:self.vineOutputURL] imageByScalingAndCroppingForSize:CGSizeMake(480, 480)];
-            //self.vineOutputURL = toURL;
-            [self putVideoFile];
-            
-        });
-    });*/
-    
-    self.vineThumbnailImage = [[self imageThumbnailFromURL:self.vineOutputURL] imageByScalingAndCroppingForSize:CGSizeMake(480, 480)];
-    //self.vineOutputURL = toURL;
-    [self putVideoFile];
-
-    
-}
-
-- (void) putVideoFile {
+- (void) UploadVideoToServer {
     
     NSData *videoData = [NSData dataWithContentsOfFile:self.vineOutputURL.path];
     
@@ -589,7 +238,7 @@
         
         NSLog(@"upload video ok: %@", self.vineUploadVideoURL);
         
-        [self putThumbnailFile];
+        [self uploadPostThumbnail];
         
     } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
         NSLog(@"Error: %@", error);
@@ -615,7 +264,7 @@
     [operation start];
 }
 
-- (void) putThumbnailFile{
+- (void) uploadPostThumbnail{
     
     NSData *data = UIImageJPEGRepresentation(self.vineThumbnailImage, 1);
     
@@ -644,7 +293,7 @@
         NSDictionary *dict = res.allHeaderFields;
         self.vineUploadThumbnailURL = [dict objectForKey:@"X-Upload-Key"];
         
-        [self uploadToVine];
+        [self uploadPostToVine];
         
     } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
         NSLog(@"Error: %@", error);

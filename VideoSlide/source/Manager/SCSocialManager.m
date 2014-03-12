@@ -15,21 +15,9 @@ static SCSocialManager *instance;
 
 @implementation SCSocialManager
 
-// youtube
-@synthesize youtubeManager;
-@synthesize emailManager;
-@synthesize messageManager;
-@synthesize twitterManager;
-@synthesize facebookManager;
-@synthesize googlePlusManager;
-@synthesize instagramManager;
+
 @synthesize allUploadItems = _allUploadItems;
 // manage num of share
-@synthesize numShareEmail;
-@synthesize numShareMessage;
-@synthesize numShareFacebook;
-@synthesize numShareTwitter;
-@synthesize numShareGooglePlus;
 @synthesize vineManager;
 
 - (id)init
@@ -127,21 +115,10 @@ static SCSocialManager *instance;
 
 #pragma mark - Manage number of sharings
 - (void)loadNumberOfSharing {
-    NSUserDefaults *userDefault = [NSUserDefaults standardUserDefaults];
-    self.numShareEmail = [userDefault boolForKey:SC_SHARE_NUMBER_EMAIL_KEY];
-    self.numShareMessage = [userDefault boolForKey:SC_SHARE_NUMBER_MESSAGE_KEY];
-    self.numShareFacebook = [userDefault boolForKey:SC_SHARE_NUMBER_FACEBOOK_KEY];
-    self.numShareTwitter = [userDefault boolForKey:SC_SHARE_NUMBER_TWITTER_KEY];
-    self.numShareGooglePlus = [userDefault boolForKey:SC_SHARE_NUMBER_GOOGLE_PLUS_KEY];
+   // NSUserDefaults *userDefault = [NSUserDefaults standardUserDefaults];}
 }
-
 - (void)saveNumberOfSharing {
     NSUserDefaults *userDefault = [NSUserDefaults standardUserDefaults];
-    [userDefault setBool:self.numShareEmail forKey:SC_SHARE_NUMBER_EMAIL_KEY];
-    [userDefault setBool:self.numShareMessage forKey:SC_SHARE_NUMBER_MESSAGE_KEY];
-    [userDefault setInteger:self.numShareFacebook forKey:SC_SHARE_NUMBER_FACEBOOK_KEY];
-    [userDefault setInteger:self.numShareTwitter forKey:SC_SHARE_NUMBER_TWITTER_KEY];
-    [userDefault setInteger:self.numShareGooglePlus forKey:SC_SHARE_NUMBER_GOOGLE_PLUS_KEY];
     [userDefault synchronize];
 }
 
